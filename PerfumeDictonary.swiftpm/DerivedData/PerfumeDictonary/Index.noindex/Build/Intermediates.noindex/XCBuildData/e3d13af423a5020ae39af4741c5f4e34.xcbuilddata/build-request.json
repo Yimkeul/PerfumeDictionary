@@ -1,0 +1,63 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "PACKAGE-TARGET:AppModule--258652ACFE1470-testable"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:PerfumeDictonary"
+    }
+  ],
+  "containerPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "macosx",
+      "sdk" : "macosx14.2",
+      "sdkVariant" : "iosmac",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Index.noindex/PrecompiledHeaders",
+      "indexRegularBuildIntermediatesPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Build/Intermediates.noindex",
+      "indexRegularBuildProductsPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Build/Products",
+      "pchPath" : "/Users/sejunlee/PerfumeDictionary/PerfumeDictonary.swiftpm/DerivedData/PerfumeDictonary/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

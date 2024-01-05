@@ -1,0 +1,4 @@
+module AppModule {
+header "AppModule-Swift.h"
+export *
+}

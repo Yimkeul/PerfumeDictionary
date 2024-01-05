@@ -1,0 +1,3 @@
+Target dependency graph (2 targets)
+Target 'PerfumeDictonary' in project 'PerfumeDictonary' (no dependencies)
+Target 'AppModule' in project 'PerfumeDictonary' (no dependencies)
