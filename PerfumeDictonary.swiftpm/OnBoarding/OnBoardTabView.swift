@@ -11,7 +11,7 @@ struct OnBoardTabView: View {
     @Binding var showOnboardingView: Bool
     var body: some View {
         TabView() {
-            TestFirstView()
+            FirstTabView()
             OnBoardView(title: "First", showsDismissButton: false, showOnboardingView: $showOnboardingView)
             OnBoardView(title: "Second", showsDismissButton: true, showOnboardingView: $showOnboardingView)
         }
