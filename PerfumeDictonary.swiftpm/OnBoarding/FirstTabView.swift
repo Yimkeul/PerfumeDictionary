@@ -70,6 +70,7 @@ struct FirstTabView: View {
                     .offset(x: item.xPos, y: showAnimation ? item.yPos : top)
                     .animation(
                         Animation.timingCurve(0.11, 0, 0.5, 0).speed(0.3)
+                                                    .delay(1)
                     , value: showAnimation)
                     .onAppear() {
                     showAnimation = true
@@ -83,7 +84,7 @@ struct FirstTabView: View {
                     .offset(x: item.xPos, y: showAnimation ? item.yPos : top)
                     .animation(
                         Animation.timingCurve(0.11, 0, 0.5, 0).speed(0.3)
-                            .delay(0.2)
+                            .delay(1.2)
                     , value: showAnimation)
                     .onAppear() {
                     showAnimation = true
