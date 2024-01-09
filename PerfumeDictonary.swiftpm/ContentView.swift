@@ -12,7 +12,7 @@ struct ContentView: View {
             
         }
         .fullScreenCover(isPresented: $showOnboardingView, content: {
-            OnboardingView(showOnboardingView: $showOnboardingView)
+            OnBoardTabView(showOnboardingView: $showOnboardingView)
         })
     }
 }

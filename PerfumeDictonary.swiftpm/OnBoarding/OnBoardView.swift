@@ -1,26 +1,6 @@
-//
-//  OnboardingView.swift
-//  PerfumeDictonary
-//
-//  Created by yimkeul on 1/4/24.
-//
-
 import SwiftUI
 
-struct OnboardingView: View {
-    @Binding var showOnboardingView: Bool
-    var body: some View {
-        TabView() {
-            OnboardView(title: "First", showsDismissButton: false, showOnboardingView: $showOnboardingView)
-            OnboardView(title: "Second", showsDismissButton: true, showOnboardingView: $showOnboardingView)
-        }
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-    }
-}
-
-
-struct OnboardView: View {
+struct OnBoardView: View {
     let title: String
     let showsDismissButton: Bool
     @Binding var showOnboardingView: Bool
