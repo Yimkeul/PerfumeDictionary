@@ -6,6 +6,8 @@ struct bgEffect: Hashable {
     let xPos: CGFloat
     let yPos: CGFloat
     let rotate: Angle
+    let p1: Double
+    let p3: Double
 }
 
 struct FirstTabView: View {
@@ -40,7 +42,7 @@ struct FirstTabView: View {
             }
             let yPos: CGFloat = CGFloat(bottom)
             let rotate = Angle.degrees(Double.random(in: 0..<360))
-            items.append(bgEffect(imageName: imageName[i % 4], xPos: xPos, yPos: yPos, rotate: rotate))
+            items.append(bgEffect(imageName: imageName[i % 4], xPos: xPos, yPos: yPos, rotate: rotate, p1: Double.random(in: 0...0.11), p3:Double.random(in: 0...0.5)))
         }
 
         xPos = 0
@@ -52,9 +54,9 @@ struct FirstTabView: View {
             } else {
                 xPos = CGFloat(i % canDraw) * 100
             }
-            let yPos: CGFloat = CGFloat(bottom / 2)
+            let yPos: CGFloat = CGFloat(bottom - 100)
             let rotate = Angle.degrees(Double.random(in: 0..<360))
-            items2.append(bgEffect(imageName: imageName2[i % 4], xPos: xPos, yPos: yPos, rotate: rotate))
+            items2.append(bgEffect(imageName: imageName2[i % 4], xPos: xPos, yPos: yPos, rotate: rotate, p1: Double.random(in: 0...0.11), p3:Double.random(in: 0...0.5)))
         }
     }
 
@@ -72,7 +74,7 @@ struct FirstTabView: View {
                     .rotationEffect(showAnimation ? item.rotate : .degrees(0))
                     .offset(x: item.xPos, y: showAnimation ? item.yPos : top)
                     .animation(
-                    Animation.timingCurve(0.11, 0, 0.5, 0).speed(0.3)
+                        Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.3)
                         .delay(1)
                     , value: showAnimation)
                     .onAppear() {
@@ -83,11 +85,11 @@ struct FirstTabView: View {
                 item in
                 Image(item.imageName)
                     .resizable()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 180, height: 180)
                     .rotationEffect(showAnimation ? item.rotate : .degrees(0))
                     .offset(x: item.xPos, y: showAnimation ? item.yPos : top)
                     .animation(
-                    Animation.timingCurve(0.11, 0, 0.5, 0).speed(0.3)
+                        Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.3)
                         .delay(1.2)
                     , value: showAnimation)
                     .onAppear() {
