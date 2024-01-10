@@ -23,14 +23,14 @@ let package = Package(
             appIcon: .placeholder(icon: .cloud),
             accentColor: .presetColor(.purple),
             supportedDeviceFamilies: [
-                .pad,
-                .phone
+                .pad
+//                .phone
             ],
             supportedInterfaceOrientations: [
-                .portrait,
-                .landscapeRight,
-                .landscapeLeft,
-                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+//                .portrait,
+                .landscapeRight
+//                .landscapeLeft,
+//                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
             ],
             appCategory: .education
         )
