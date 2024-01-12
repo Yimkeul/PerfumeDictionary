@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var showOnboardingView: Bool = true
-    
+//    @State var showOnboardingView: Bool = true
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -11,8 +11,8 @@ struct ContentView: View {
             Text("Hello, world!")
             
         }
-        .fullScreenCover(isPresented: $showOnboardingView, content: {
-            OnBoardTabView(showOnboardingView: $showOnboardingView)
+        .fullScreenCover(isPresented: $isOnboarding, content: {
+            OnBoardTabView(showOnboardingView: $isOnboarding)
         })
     }
 }

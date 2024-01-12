@@ -9,13 +9,22 @@ import SwiftUI
 
 struct OnBoardTabView: View {
     @Binding var showOnboardingView: Bool
+
+    @State var pageIndex = 0
+    @State private var showAnimation3: Bool = false
+    
     var body: some View {
-        TabView() {
-            FirstTabView()
-            OnBoardView(title: "First", showsDismissButton: false, showOnboardingView: $showOnboardingView)
-            OnBoardView(title: "Second", showsDismissButton: true, showOnboardingView: $showOnboardingView)
+        TabView(selection: $pageIndex) {
+            FirstTabView().tag(0)
+            SecondTabView().tag(1)
+            ThridTabView(showOnboardingView: $showOnboardingView, showAnimation3: $showAnimation3).tag(2)
         }
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            .tabViewStyle(.page(indexDisplayMode: .always))
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            .onChange(of: pageIndex) { newValue in
+            if newValue == 2 {
+                showAnimation3 = true
+            }
+        }
     }
 }
