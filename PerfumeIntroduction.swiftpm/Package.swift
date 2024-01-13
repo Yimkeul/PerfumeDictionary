@@ -8,31 +8,30 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "PerfumeDictonary",
+    name: "PerfumeIntroduction",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "PerfumeDictonary",
+            name: "PerfumeIntroduction",
             targets: ["AppModule"],
-            bundleIdentifier: "com.Yimkeul.PerfumeDictonary",
+            bundleIdentifier: "com.Yimkeul.PerfumeIntroduction",
             teamIdentifier: "Y333NVBXPT",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .cloud),
-            accentColor: .presetColor(.purple),
+            appIcon: .placeholder(icon: .earth),
+            accentColor: .presetColor(.mint),
             supportedDeviceFamilies: [
-                .pad
-//                .phone
+                .pad,
+                .phone
             ],
             supportedInterfaceOrientations: [
-//                .portrait,
-                .landscapeRight
-//                .landscapeLeft,
-//                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ],
-            appCategory: .education
+                .portrait,
+                .landscapeRight,
+                .landscapeLeft,
+                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+            ]
         )
     ],
     targets: [
