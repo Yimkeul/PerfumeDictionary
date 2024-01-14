@@ -16,7 +16,10 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Color.BG.ignoresSafeArea(.container, edges: .bottom)
+            Image("BGImg")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea(.container, edges: .bottom)
             VStack {
                 Spacer()
                 Text("Perfume Introduction")
@@ -31,7 +34,6 @@ struct OnboardingView: View {
                 Spacer()
                 Button {
                     isAppear.toggle()
-                    print("isApper : \(isAppear.description)")
                 } label: {
                     ZStack {
                         Capsule()
@@ -51,8 +53,6 @@ struct OnboardingView: View {
             if isAppear == true {
                 onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)
             }
-
-
         }
             .onAppear() {
             onboardEffect.setItem()
@@ -70,7 +70,7 @@ struct OnboardingView: View {
                     .rotationEffect(isAnimation ? item.rotate : .degrees(0))
                     .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
                     .animation(
-                    Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
+                        Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
                     , value: isAnimation)
             }
 
@@ -82,13 +82,12 @@ struct OnboardingView: View {
                     .rotationEffect(isAnimation ? item.rotate : .degrees(0))
                     .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
                     .animation(
-                    Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
+                        Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
                         .delay(0.5)
                     , value: isAnimation)
             }
         }
             .onAppear() {
-            print(item1.count)
             self.isAnimation = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.8, execute: {
                 self.isOnboard.toggle()
