@@ -16,16 +16,16 @@ struct CarouselScrollView: View {
     
     var body: some View {
             ZStack {
-                line().offset(y:CGFloat(-500))
+//                Rope().offset(y:CGFloat(-500))
                 ForEach(0..<images.count, id: \.self) { index in
                     VStack{
                         Text(images[currentIndex])
-                        Rectangle()
-                            .frame(width: 200, height: 500)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-                            .opacity(currentIndex == index ? 1.0 : 0.8)
-                            .scaleEffect(currentIndex == index ? 1.2 : 1.0)
-                            .offset(x: CGFloat(index - currentIndex) * 250 + dragOffset, y: currentIndex == index ? CGFloat(50) : CGFloat(abs(currentIndex - index) * -40))
+
+                        CardView()
+                            .scaleEffect(currentIndex == index ? 1.0: 0.8)
+                            .offset(
+                                x: CGFloat(index - currentIndex) * 300 + dragOffset,
+                                y: currentIndex == index ? 0 : CGFloat(abs(currentIndex - index) * -80))
                             .onTapGesture {
                                 // TODO: Set NavigationLink
                             }
@@ -51,10 +51,10 @@ struct CarouselScrollView: View {
     }
     
     @ViewBuilder
-    func line() -> some View {
+    func Rope() -> some View {
                 Ellipse()
                     .trim(from: 0, to: 0.5)
-                    .stroke(Color.orange, style: StrokeStyle(
+                    .stroke(Color.Rope, style: StrokeStyle(
                         lineWidth: 30, lineCap: .round, dash: [20]
                     ))
                     .frame(width: 1366, height: 500)

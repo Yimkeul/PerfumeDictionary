@@ -10,4 +10,5 @@ import SwiftUI
 
 extension Color {
     static let BG = Color("BG")
+    static let Rope = Color("Rope")
 }

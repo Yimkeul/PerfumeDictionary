@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isOnboard: Bool = true
+    @State private var isOnboard: Bool = false
     var body: some View {
 
 
