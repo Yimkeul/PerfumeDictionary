@@ -119,9 +119,8 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
-\*.swiftpm/DerivedData
-\*.swiftpm/xcode
 \*.swiftpm/.swiftpm
+\*.swiftpm/DerivedData
 # CocoaPods
 
 # We recommend against adding the Pods directory to your .gitignore. However
