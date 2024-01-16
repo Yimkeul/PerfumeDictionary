@@ -5,17 +5,17 @@ struct ContentView: View {
     var body: some View {
 
 
-        ZStack {
-            Image("BGImg")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.container, edges: .bottom)
-            CarouselScrollView()
+        NavigationStack {
+            ZStack {
+                Image("BGImg")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea(.container, edges: .bottom)
+                CarouselScrollView()
+            }
+                .fullScreenCover(isPresented: $isOnboard, content: {
+                OnboardingView(isOnboard: $isOnboard)
+            })
         }
-
-
-            .fullScreenCover(isPresented: $isOnboard, content: {
-            OnboardingView(isOnboard: $isOnboard)
-        })
     }
 }
