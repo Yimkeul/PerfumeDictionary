@@ -2,20 +2,61 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isOnboard: Bool = false
+    @State private var selection: MenuType?
+
     var body: some View {
-
-
-        NavigationStack {
-            ZStack {
-                Image("BGImg")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea(.container, edges: .bottom)
-                CarouselScrollView()
+        NavigationSplitView {
+            List(selection: $selection) {
+                ForEach(MenuData) { index in
+                    NavigationLink(value: index.type) {
+                        Sidebar(title: index.title, desc: index.desc)
+                    }
+                }
             }
-                .fullScreenCover(isPresented: $isOnboard, content: {
-                OnboardingView(isOnboard: $isOnboard)
-            })
+                .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        selection = nil
+                    } label: {
+                        Text("Perfume Introduction")
+                            .foregroundStyle(.black)
+                            .font(.system(size: 20, weight: .bold))
+                    }
+
+                }
+            }
+
+        } detail: {
+            if let focus = selection {
+                MenuType.view(focus)
+            } else {
+                ZStack {
+                    Image("BGImg")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea(.all)
+                    Image("Intro")
+                        .imageScale(.large)
+                }
+            }
         }
+            .fullScreenCover(isPresented: $isOnboard, content: {
+            OnboardingView(isOnboard: $isOnboard)
+        })
+    }
+
+    @ViewBuilder
+    private func Sidebar(title: String, desc: String) -> some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(Font.system(size: 20.0, weight: .semibold, design: .default))
+                .padding(.bottom, 4)
+            Text(desc)
+                .font(.body)
+                .foregroundColor(.gray)
+        }
+            .frame(minHeight: 60)
     }
 }
+
+

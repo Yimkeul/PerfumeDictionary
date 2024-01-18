@@ -15,9 +15,9 @@ enum Destination: String, CaseIterable {
     @ViewBuilder
     static func view(_ selection: Destination) -> some View {
         switch selection {
-        case nav1:
+        case .nav1:
             Nav1()
-        case nav2:
+        case .nav2:
             Nav2()
         }
     }
