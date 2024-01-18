@@ -13,17 +13,19 @@ struct OnboardingView: View {
     @State private var isAppear: Bool = false
     @State private var onboardEffect = OnboardEffect()
 
-
     var body: some View {
         ZStack {
-            Image("BGImg")
+            Image("BookCover")
                 .resizable()
                 .scaledToFill()
+                .opacity(0.5)
                 .ignoresSafeArea(.container, edges: .bottom)
+
             VStack {
                 Spacer()
                 Text("Perfume Introduction")
                     .font(.system(size: 50, weight: .bold))
+
                 Spacer()
                 Image("Intro")
                     .imageScale(.large)
@@ -44,12 +46,11 @@ struct OnboardingView: View {
                             .font(.system(size: 20, weight: .medium))
                             .foregroundStyle(.black)
                     }
-
                 }
                     .padding(.horizontal, 8)
                 Spacer()
             }
-            
+
             if isAppear == true {
                 onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)
             }
@@ -70,7 +71,7 @@ struct OnboardingView: View {
                     .rotationEffect(isAnimation ? item.rotate : .degrees(0))
                     .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
                     .animation(
-                        Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
+                    Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
                     , value: isAnimation)
             }
 
@@ -82,7 +83,7 @@ struct OnboardingView: View {
                     .rotationEffect(isAnimation ? item.rotate : .degrees(0))
                     .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
                     .animation(
-                        Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
+                    Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
                         .delay(0.5)
                     , value: isAnimation)
             }

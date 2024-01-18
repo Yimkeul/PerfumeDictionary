@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     // 온보딩용 변수
-    @State private var isOnboard: Bool = false
+    @State private var isOnboard: Bool = true
     // 네비게이션 변수
     @State private var selection: MenuType?
 
