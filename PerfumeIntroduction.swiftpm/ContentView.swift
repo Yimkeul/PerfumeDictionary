@@ -44,24 +44,6 @@ struct ContentView: View {
             OnboardingView(isOnboard: $isOnboard)
         })
     }
-
-    @ViewBuilder
-    private func Sidebar(title: String, desc: String, image: String) -> some View {
-        HStack {
-            Image(image)
-                .renderingMode(.template)
-                .padding(.trailing, 8)
-            VStack(alignment: .leading, spacing: 0) {
-                Text(title)
-                    .font(Font.system(size: 20.0, weight: .semibold))
-                    .padding(.bottom, 4)
-                Text(desc)
-                    .font(.body)
-                    .foregroundColor(.gray)
-            }
-        }
-        .frame(minHeight: 60)
-    }
 }
 
 
