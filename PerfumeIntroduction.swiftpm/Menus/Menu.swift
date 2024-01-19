@@ -12,12 +12,15 @@ struct Menu: Identifiable, Hashable {
     let id = UUID()
     let title: String
     let desc: String
+    let image: String
     let type: MenuType
 }
 
 enum MenuType: String, CaseIterable {
     case gender
     case note
+    case perfume
+    case incense
 
     @ViewBuilder
     static func view(_ selection: MenuType) -> some View {
@@ -26,14 +29,20 @@ enum MenuType: String, CaseIterable {
             Nav1()
         case .note:
             Nav2()
+        case .perfume:
+            Nav1()
+        case .incense:
+            Nav2()
         }
     }
 }
 
 
 let MenuData: [Menu] = [
-    Menu(title: "Gender", desc: "Gender description", type: .gender),
-    Menu(title: "Note", desc: "Note description", type: .note)
+    Menu(title: "Gender", desc: "Gender description Gender description Gender description Gender description Gender description Gender description Gender description Gender description", image: "Gender", type: .gender),
+    Menu(title: "Note", desc: "Note description", image: "Note", type: .note),
+    Menu(title: "Perfume", desc: "Perfume description", image: "Perfume", type: .perfume),
+    Menu(title: "Incense", desc: "Note description", image: "Smell", type: .incense)
 ]
 
 

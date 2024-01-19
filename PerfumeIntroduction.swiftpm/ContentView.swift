@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     // 온보딩용 변수
-    @State private var isOnboard: Bool = true
+    @State private var isOnboard: Bool = false
     // 네비게이션 변수
     @State private var selection: MenuType?
 
@@ -11,7 +11,7 @@ struct ContentView: View {
             List(selection: $selection) {
                 ForEach(MenuData) { index in
                     NavigationLink(value: index.type) {
-                        Sidebar(title: index.title, desc: index.desc)
+                        Sidebar(title: index.title, desc: index.desc, image: index.image)
                     }
                 }
             }
@@ -46,16 +46,21 @@ struct ContentView: View {
     }
 
     @ViewBuilder
-    private func Sidebar(title: String, desc: String) -> some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(Font.system(size: 20.0, weight: .semibold, design: .default))
-                .padding(.bottom, 4)
-            Text(desc)
-                .font(.body)
-                .foregroundColor(.gray)
+    private func Sidebar(title: String, desc: String, image: String) -> some View {
+        HStack {
+            Image(image)
+                .renderingMode(.template)
+                .padding(.trailing, 8)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(title)
+                    .font(Font.system(size: 20.0, weight: .semibold))
+                    .padding(.bottom, 4)
+                Text(desc)
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
         }
-            .frame(minHeight: 60)
+        .frame(minHeight: 60)
     }
 }
 
