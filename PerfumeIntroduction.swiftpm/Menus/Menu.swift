@@ -26,7 +26,7 @@ enum MenuType: String, CaseIterable {
     static func view(_ selection: MenuType) -> some View {
         switch selection {
         case .gender:
-            Nav1()
+            GenderView(isLeft: true, isAppear: .none)
         case .note:
             Nav2()
         case .perfume:
@@ -39,7 +39,7 @@ enum MenuType: String, CaseIterable {
 
 
 let MenuData: [Menu] = [
-    Menu(title: "Gender", desc: "Gender description Gender description Gender description Gender description Gender description Gender description Gender description Gender description", image: "Gender", type: .gender),
+    Menu(title: "Gender", desc: "Gender-specific perfume terminology", image: "Gender", type: .gender),
     Menu(title: "Note", desc: "Note description", image: "Note", type: .note),
     Menu(title: "Perfume", desc: "Perfume description", image: "Perfume", type: .perfume),
     Menu(title: "Incense", desc: "Note description", image: "Smell", type: .incense)

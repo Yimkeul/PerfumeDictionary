@@ -11,6 +11,7 @@ struct Sidebar: View {
     let title: String
     let desc: String
     let image: String
+    
     var body: some View {
         HStack {
             Image(image)

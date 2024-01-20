@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     // 온보딩용 변수
-    @State private var isOnboard: Bool = true
+    @State private var isOnboard: Bool = false
     // 네비게이션 변수
     @State private var selection: MenuType?
 
@@ -28,7 +28,13 @@ struct ContentView: View {
             }
         } detail: {
             if let focus = selection {
-                MenuType.view(focus)
+                ZStack {
+                    Image("BGImg")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea(.all)
+                    MenuType.view(focus)
+                }
             } else {
                 ZStack {
                     Image("BGImg")
