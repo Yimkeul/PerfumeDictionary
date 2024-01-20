@@ -17,11 +17,10 @@ struct GenderView: View {
     @State private var isLeft: Bool = true
     @State private var isAppear: appearType = .none
 
-    init(isLeft: Bool, isAppear: appearType) {
-        self._isLeft = State(initialValue: isLeft)
-        self.isAppear = isAppear
-    }
+    /// woman :  Woman(우먼) ,Famme(팜므), Elle(엘러), Her(허), Donna(돈나)
+    /// man : Man(맨), Homme(옴므), Uomo(우모), Him(힘), Male(메일)ㄴ
 
+    
     var body: some View {
         VStack {
             Spacer()
@@ -61,7 +60,7 @@ struct GenderView: View {
                 Spacer()
             }
             Spacer()
-            Text("Recently, there have been a lot of neutral scents, so the above words may not exist.")
+            Text("However in recent years, a large number of genderless perfumes have appeared, so the above words may not exist.")
             Spacer()
         }
     }
@@ -87,7 +86,6 @@ struct GenderView: View {
             }
             Button {
                 isAppear = .none
-                print("click")
             } label: {
                 Text("X")
                     .font(.system(size: 30))
@@ -97,8 +95,3 @@ struct GenderView: View {
         }
     }
 }
-
-#Preview {
-    GenderView(isLeft: true, isAppear: .none)
-}
-
