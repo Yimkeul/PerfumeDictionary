@@ -10,7 +10,7 @@ import SwiftUI
 struct NoteView: View {
     @State private var isAnimation: Bool = false
     @State private var isWind: Bool = false
-    @State var isActive:Bool = false
+    @State var isActive: Bool = false
     var body: some View {
         ZStack {
             VStack {
@@ -81,6 +81,7 @@ struct NoteView: View {
             }
                 .onAppear() {
                 isAnimation = true
+                isActive = false
             }
             if isActive {
                 Dialog(isActive: $isActive)

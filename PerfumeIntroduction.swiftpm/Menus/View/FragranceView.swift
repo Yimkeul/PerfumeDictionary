@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FragranceView: View {
     var body: some View {
-        Text("IncenseView")
+        CarouselScrollView2()
     }
 }
 

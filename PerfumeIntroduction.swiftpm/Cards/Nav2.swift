@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Nav2: View {
     var body: some View {
-        Text("Nav2")
+        VStack {
+            Text("Nav2")
+        }
     }
 }

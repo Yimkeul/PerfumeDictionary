@@ -14,6 +14,7 @@ struct Dialog: View {
         ZStack {
             Color.black
                 .opacity(0.4)
+                .ignoresSafeArea()
                 .onTapGesture {
                     close()
                 }
@@ -25,7 +26,8 @@ struct Dialog: View {
                     .font(.system(size: 30, weight: .semibold))
                 Text("가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼")
             }
-    //        .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: 700)
+            
             .padding()
             .background(.pink)
             .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .circular))
@@ -50,7 +52,7 @@ struct Dialog: View {
             .padding(30)
             .offset(y : offset)
             .onAppear() {
-                withAnimation(.spring()) {
+                withAnimation(.easeIn) {
                     offset = 0
                 }
             }
@@ -59,7 +61,7 @@ struct Dialog: View {
     }
     
     private func close () {
-        withAnimation(.spring) {
+        withAnimation(.easeOut) {
             offset = 1000
             isActive = false
         }
