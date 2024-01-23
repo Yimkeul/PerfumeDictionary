@@ -11,59 +11,21 @@ struct NoteView: View {
     @State private var isAnimation: Bool = false
     @State private var isWind: Bool = false
     @State var isActive: Bool = false
+    
+    
     var body: some View {
         ZStack {
             VStack {
                 Spacer()
                 Text("Note represents the changes or stages of fragrance over tiem")
+                    .foregroundStyle(.black)
                 Text("""
                      Typically categorized into Top, Mid, and Base. Shall we explore the fragrance together by clicking on it?
                      """)
+                .foregroundStyle(.black)
                 Spacer()
                 HStack {
-                    ZStack {
-                        VStack {
-                            Text("Push me")
-                            Text("👇")
-                        }
-                            .font(.system(size: 16, weight: .bold))
-                            .offset(y: isAnimation ? -70 : -50)
-                            .animation(
-                                .linear(duration: 1)
-                                .repeatForever(autoreverses: true)
-                            , value: isAnimation
-                        )
-
-                        Button {
-                            withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: false)) {
-
-                                isWind = true
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    isWind = false
-                                }
-                            }
-                            
-                        } label: {
-                            Image("Perfume")
-                                .resizable()
-                                .scaledToFit()
-                                .scaleEffect(x: -1, y: 1)
-                                .frame(width: 50)
-                        }
-                    }.disabled(isWind ? true : false)
-
-
-
-
-                    Image("Wind")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50)
-                        .mask {
-                        Rectangle()
-                            .frame(width: isWind ? 50 : 0)
-                            .offset(x: isWind ? 0 : -(50 * 0.35))
-                    }
+                    Perfume(isAnimation: $isAnimation, isWind: $isWind)
 
                     Image("Person")
                         .resizable()

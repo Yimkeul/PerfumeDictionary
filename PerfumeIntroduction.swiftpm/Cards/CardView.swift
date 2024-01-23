@@ -46,32 +46,11 @@ struct CardView: View {
                     .offset(x: 25, y: 125)
                     .overlay(Rectangle().stroke(Color.black, lineWidth: 5).offset(x: 25, y: 125))
 
-
-
-
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: 225, height: 425)
                     .offset(x: 37.5, y: 137.5)
                     .overlay(Rectangle().stroke(Color.black, lineWidth: 2).offset(x: 37.5, y: 137.5))
-
-//                ZStack {
-//                    Button {
-//                        onButtonTap()
-//                    } label: {
-//                        VStack(alignment: .leading){
-//                            HStack{
-//                                Text(Title)
-//                                    .font(.system(size: 50, weight: .light))
-//                                Spacer()
-//                            }.padding(.bottom, 20)
-//                            Text(Desc)
-//                                .font(.system(size: 20, weight: .thin))
-//                            Spacer()
-//                        }.padding()
-//                    }
-//                }.frame(width: 225, height: 425)
-//                    .offset(x: 37.5, y: 137.5)
 
                 ZStack {
                     VStack(alignment: .leading) {
@@ -87,7 +66,7 @@ struct CardView: View {
                 }
                     .frame(width: 225, height: 425)
                     .offset(x: 37.5, y: 137.5)
-                    
+
 
 
 
@@ -124,9 +103,3 @@ struct CardView: View {
         }
     }
 }
-
-//#Preview {
-//    CardView(Title: "History", Desc: "Perfume History") {
-//        print("Hello")
-//    }
-//}

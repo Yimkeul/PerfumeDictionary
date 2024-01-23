@@ -16,6 +16,9 @@ struct Sidebar: View {
         HStack {
             Image(image)
                 .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50,height: 50)
                 .padding(.trailing, 8)
             VStack(alignment: .leading, spacing: 0) {
                 Text(title)
