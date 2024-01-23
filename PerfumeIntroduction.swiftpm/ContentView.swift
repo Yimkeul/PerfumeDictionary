@@ -21,7 +21,7 @@ struct ContentView: View {
                         selection = nil
                     } label: {
                         Text("Perfume Introduction")
-                            .foregroundStyle(.black)
+                            .foregroundStyle(Color.BG)
                             .font(.system(size: 20, weight: .bold))
                     }
                 }

@@ -35,8 +35,10 @@ struct NoteView: View {
                         )
 
                         Button {
-                            print("click")
-                            isWind = true
+                            isWind.toggle()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                isWind.toggle()
+                            }
                         } label: {
                             Image("Perfume")
                                 .resizable()
@@ -44,8 +46,8 @@ struct NoteView: View {
                                 .scaleEffect(x: -1, y: 1)
                                 .frame(width: 50)
                         }
+                    }.disabled(isWind ? true : false)
 
-                    }
 
 
 
@@ -53,12 +55,20 @@ struct NoteView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50)
+                        .opacity(isWind ? 1 : 0)
                         .mask {
                         Rectangle()
                             .frame(width: isWind ? 50 : 0)
-                            .offset(x: isWind ? 0 : -60)
+                            .offset(x: isWind ? 80 : -70)
+                            .animation(.easeIn(duration: 1), value: isWind)
                     }
-                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false), value: isWind)
+                        
+
+
+
+
+
+
 
 
 
