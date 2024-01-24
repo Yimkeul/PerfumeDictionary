@@ -32,7 +32,7 @@ struct ContentView: View {
                     Image("BGImg")
                         .resizable()
                         .scaledToFill()
-                        .ignoresSafeArea(.all)
+                        .ignoresSafeArea()
                     MenuType.view(focus)
                 }
             } else {
@@ -40,7 +40,7 @@ struct ContentView: View {
                     Image("BGImg")
                         .resizable()
                         .scaledToFill()
-                        .ignoresSafeArea(.all)
+                        .ignoresSafeArea()
                     Image("Intro")
                         .imageScale(.large)
                 }

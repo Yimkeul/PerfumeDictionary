@@ -27,10 +27,10 @@ let package = Package(
                 .phone
             ],
             supportedInterfaceOrientations: [
-                .portrait,
+//                .portrait,
                 .landscapeRight,
-                .landscapeLeft,
-                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+                .landscapeLeft
+//                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
             ]
         )
     ],

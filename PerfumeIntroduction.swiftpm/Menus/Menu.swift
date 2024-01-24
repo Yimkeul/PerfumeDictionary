@@ -39,7 +39,7 @@ enum MenuType: String, CaseIterable {
 
 
 let MenuData: [Menu] = [
-    Menu(title: "Gender", desc: "Gender-specific perfume terminology", image: "Gender", type: .gender),
+    Menu(title: "Gender", desc: "Different perfume terms for each gender", image: "Gender", type: .gender),
     Menu(title: "Note", desc: "Changes or stages of fragrance over time", image: "Note", type: .note),
     Menu(title: "Perfume", desc: "Perfume description", image: "Perfume", type: .perfume),
     Menu(title: "Fragrance", desc: "Note description", image: "Smell", type: .fragrance)
