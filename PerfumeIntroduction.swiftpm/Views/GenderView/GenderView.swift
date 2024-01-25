@@ -25,6 +25,7 @@ struct GenderView: View {
     var body: some View {
         ZStack {
             VStack {
+                Spacer()
                 Group {
                     Text("Different perfume terms for each gender")
                         .font(.title)
@@ -34,7 +35,7 @@ struct GenderView: View {
                         .font(.title2)
                 }.foregroundColor(.black)
 
-                Spacer()
+                Spacer().frame(maxHeight: 120)
 
                 HStack {
                     Spacer()

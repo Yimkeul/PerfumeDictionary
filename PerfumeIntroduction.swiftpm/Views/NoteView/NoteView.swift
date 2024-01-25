@@ -13,33 +13,54 @@ struct NoteView: View {
     @State var isActive: Bool = false
     @State var isFeel: Bool = false
 
-    var body: some View {
+    @State var isW: CGFloat = UIScreen.main.bounds.width
+    @State var isH: CGFloat = UIScreen.main.bounds.height
+    @State var isS: CGFloat = 0
 
+    var body: some View {
         ZStack {
             VStack {
                 Spacer()
                 Group {
-                    Text("Note represents the changes or stages of fragrance over time")
-                    Text("Typically categorized into Top, Mid, and Base.\nShall we explore the fragrance together by clicking on it?")
-                        .multilineTextAlignment(.center)
+                    Text("Changes or stages of fragrance over time")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 16)
+                    Text("Typically categorized into Top, Mid, and Base.")
+                        .font(.title2)
+                    Text("Shall we explore the fragrance together by clicking on it?")
+                        .font(.title2)
                 }
                     .foregroundStyle(.black)
-                Spacer()
+                Spacer().frame(maxHeight: 120)
                 HStack {
-                    Perfume(isAnimation: $isAnimation, isWind: $isWind, isFeel: $isFeel).background(.green)
-                    //                    Spacer().frame(maxWidth: 100)
                     Spacer()
-                    Head(isFeel: isFeel).background(.green)
+                    Perfume(isAnimation: $isAnimation, isWind: $isWind, isFeel: $isFeel)
+                    Spacer()
+                    Head(isFeel: isFeel)
+                    Spacer()
                 }
                 Spacer()
             }
+                .padding()
+                .frame(width: isS)
+
             if isActive {
                 Dialog(isActive: $isActive)
             }
         }
             .onAppear() {
-            isAnimation = true
+            withAnimation(.linear(duration: 1)
+                .repeatForever(autoreverses: true)) {
+                isAnimation = true
+            }
             isActive = false
+            isS = min(isW, isH)
+        }
+            .onChange(of: UIScreen.main.bounds.size) { _ in
+            isW = UIScreen.main.bounds.width
+            isH = UIScreen.main.bounds.height
+            isS = min(isW, isH)
         }
     }
 
@@ -52,16 +73,6 @@ struct NoteView: View {
                 .frame(width: 270, height: 270)
 
             ZStack {
-                Rectangle()
-                    .fill(.pink)
-                    .frame(width: 30, height: 40)
-                    .rotationEffect(Angle(degrees: 45))
-                    .offset(x: 20, y: 15)
-
-                Ellipse()
-                    .fill(.pink)
-                    .frame(width: 100, height: 60)
-
                 Image("Exclamation")
                     .renderingMode(.template)
                     .resizable()
@@ -69,7 +80,7 @@ struct NoteView: View {
                     .frame(width: 50)
                     .foregroundColor(.yellow)
             }
-                .offset(x: 50, y: -110)
+                .offset(x: 50, y: -120)
                 .opacity(isFeel ? 1 : 0)
                 .scaleEffect(isFeel ? 1.5 : 0)
                 .onTapGesture {

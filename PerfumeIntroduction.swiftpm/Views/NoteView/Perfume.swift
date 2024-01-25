@@ -50,18 +50,14 @@ struct Perfume: View {
                 }
                     .font(.system(size: 16, weight: .bold))
                     .offset(y: isAnimation ? (-150) - 35 : (-150) - 25)
-                    .animation(
-                        .linear(duration: 1)
-                        .repeatForever(autoreverses: true)
-                    , value: isAnimation
-                )
                 MiniPefume()
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 2)) {
                             isWind = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                soundManager.playSound(sound: .perfume)
-                            }
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                                soundManager.playSound(sound: .perfume)
+//                            }
+                            soundManager.playSound(sound: .perfume)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 isWind = false
                                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
@@ -74,12 +70,12 @@ struct Perfume: View {
             
             Image("Wind")
                 .resizable()
-                .frame(width: CWidth / 2, height : 80)
+                .frame(width: 300, height : 80)
                 .scaledToFit()
                 .mask {
                 Rectangle()
-                    .frame(width: CWidth, height: CWidth)
-                    .offset(x: isWind ? CWidth : -CWidth)
+                    .frame(width: 300, height: 300)
+                    .offset(x: isWind ? 300 : -300)
                 }.offset(x: -50, y : -135)
         }
     }
