@@ -15,6 +15,7 @@ struct NoteView: View {
 
     var body: some View {
 
+        ZStack {
             VStack {
                 Spacer()
                 Group {
@@ -22,24 +23,24 @@ struct NoteView: View {
                     Text("Typically categorized into Top, Mid, and Base.\nShall we explore the fragrance together by clicking on it?")
                         .multilineTextAlignment(.center)
                 }
-                .foregroundStyle(.black)
+                    .foregroundStyle(.black)
                 Spacer()
                 HStack {
                     Perfume(isAnimation: $isAnimation, isWind: $isWind, isFeel: $isFeel).background(.green)
-//                    Spacer().frame(maxWidth: 100)
+                    //                    Spacer().frame(maxWidth: 100)
                     Spacer()
                     Head(isFeel: isFeel).background(.green)
                 }
                 Spacer()
             }
-                .onAppear() {
-                isAnimation = true
-                isActive = false
-            }
             if isActive {
                 Dialog(isActive: $isActive)
             }
-
+        }
+            .onAppear() {
+            isAnimation = true
+            isActive = false
+        }
     }
 
     @ViewBuilder
@@ -49,18 +50,18 @@ struct NoteView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 270, height: 270)
-            
+
             ZStack {
                 Rectangle()
                     .fill(.pink)
                     .frame(width: 30, height: 40)
                     .rotationEffect(Angle(degrees: 45))
                     .offset(x: 20, y: 15)
-                
+
                 Ellipse()
                     .fill(.pink)
                     .frame(width: 100, height: 60)
-                    
+
                 Image("Exclamation")
                     .renderingMode(.template)
                     .resizable()
@@ -72,8 +73,8 @@ struct NoteView: View {
                 .opacity(isFeel ? 1 : 0)
                 .scaleEffect(isFeel ? 1.5 : 0)
                 .onTapGesture {
-                    isActive = true
-                }
+                isActive = true
+            }
         }
     }
 }

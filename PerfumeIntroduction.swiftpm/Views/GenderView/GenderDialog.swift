@@ -10,17 +10,17 @@ import SwiftUI
 struct GenderDialog: View {
     @Binding var genderType: genderType
     @Binding var isActive: Bool
+    @Binding var isS: CGFloat
 
     @State private var offset: CGFloat = 1000
     @State private var isAnimation: Bool = false
-
+    
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.black, .gray.opacity(0.8)]),
+            LinearGradient(gradient: Gradient(colors: [.black, .gray]),
                            startPoint: .bottom,
                            endPoint: .top)
                 .ignoresSafeArea()
-                .opacity(0.9)
 
             VStack(alignment: .leading) {
                 Spacer()
@@ -56,7 +56,9 @@ struct GenderDialog: View {
                 Spacer()
             }
             .padding()
-        }.toolbar(content: {
+            .frame(width: isS)
+        }
+        .toolbar(content: {
             Button {
                 close()
             } label: {
@@ -67,7 +69,7 @@ struct GenderDialog: View {
         })
             .offset(y: offset)
             .onAppear() {
-            withAnimation(.easeIn) {
+                withAnimation(.easeIn) {
                 offset = 0
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
