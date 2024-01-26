@@ -15,7 +15,8 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Image("BookCover")
+//            Image("BookCover")
+            Image("BGImg")
                 .resizable()
                 .scaledToFill()
                 .opacity(0.5)

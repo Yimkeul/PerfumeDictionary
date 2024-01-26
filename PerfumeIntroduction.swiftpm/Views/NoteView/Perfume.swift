@@ -11,6 +11,7 @@ struct Perfume: View {
     @Binding var isAnimation: Bool
     @Binding var isWind: Bool
     @Binding var isFeel: Bool
+    @Binding var isSmell: Bool
     
     let miniW = UIScreen.main.bounds.width
     let miniH = UIScreen.main.bounds.height
@@ -57,6 +58,7 @@ struct Perfume: View {
                             soundManager.playSound(sound: .perfume)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 isWind = false
+                                isSmell = true
                                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
                                     isFeel = true
                                 }
@@ -88,5 +90,5 @@ struct Perfume: View {
 
 
 #Preview {
-    Perfume(isAnimation: .constant(false), isWind: .constant(false), isFeel: .constant(false))
+    Perfume(isAnimation: .constant(false), isWind: .constant(false), isFeel: .constant(false), isSmell: .constant(false))
 }

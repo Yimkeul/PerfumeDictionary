@@ -13,8 +13,7 @@ struct MidNoteView: View {
     var isType: noteType
 
     @State var isFeel: Bool = false
-    @State var isFlower: Bool = false
-//    @State var isAnimation: Bool = false
+    @State var isSmell: Bool = false
 
     var body: some View {
 
@@ -25,7 +24,7 @@ struct MidNoteView: View {
             .onAppear() {
             withAnimation(.easeInOut(duration: 1).speed(0.5)
                 .repeatForever(autoreverses: false)) {
-                isFlower = true
+                    isSmell = true
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
@@ -65,17 +64,17 @@ struct MidNoteView: View {
     private func Person() -> some View {
         ZStack {
             Text("🌸")
-                .offset(x: -80, y: isFlower ? -50 : 0)
-                .opacity(isFlower ? 0 : 0.8)
+                .offset(x: -80, y: isSmell ? -50 : 0)
+                .opacity(isSmell ? 0 : 0.8)
             Text("🌼")
-                .offset(x: -100, y: isFlower ? -110 : 0)
-                .opacity(isFlower ? 0 : 0.8)
+                .offset(x: -100, y: isSmell ? -110 : 0)
+                .opacity(isSmell ? 0 : 0.8)
             Text("🌸")
-                .offset(x: 80, y: isFlower ? -120 : 0)
-                .opacity(isFlower ? 0 : 0.8)
+                .offset(x: 80, y: isSmell ? -120 : 0)
+                .opacity(isSmell ? 0 : 0.8)
             Text("🌼")
-                .offset(x: 100, y: isFlower ? -80 : 0)
-                .opacity(isFlower ? 0 : 0.8)
+                .offset(x: 100, y: isSmell ? -80 : 0)
+                .opacity(isSmell ? 0 : 0.8)
 
             Image(systemName: "person.fill")
                 .resizable()

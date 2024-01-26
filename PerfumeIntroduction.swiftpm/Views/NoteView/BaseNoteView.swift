@@ -12,50 +12,55 @@ struct BaseNoteView: View {
     @Binding var isActive: Bool
     var isType: noteType
 
-    @State var isFeel: Bool = true
-    @State var isWind: Bool = false
+    @State var isFeel: Bool = false
+    @State var isSmell: Bool = false
     @State var isAnimation: Bool = false
 
     var body: some View {
 
         VStack {
-            Image(systemName: "person.3.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-                .offset(y : 30)
-            
-            Image(systemName: "person.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-            
-        }  .frame(height: 270)
+            Feel(isFeel: isFeel)
+        } .frame(height: 270)
             .onAppear() {
-            withAnimation(.linear(duration: 1)
-                .repeatForever(autoreverses: true)) {
-                isAnimation = true
+            withAnimation(.easeInOut(duration: 1).speed(0.5)
+                .repeatForever(autoreverses: false)) {
+                isSmell = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                    isFeel = true
+                }
             }
             isActive = false
         }
     }
 
     @ViewBuilder
-    private func Head(isFeel: Bool) -> some View {
+    private func Feel(isFeel: Bool) -> some View {
         ZStack {
+            Text("🪵")
+                .offset(x: -80, y: isSmell ? -50 : 0)
+                .opacity(isSmell ? 0 : 0.8)
+            Text("🌱")
+                .offset(x: -100, y: isSmell ? -110 : 0)
+                .opacity(isSmell ? 0 : 0.8)
+            Text("🪵")
+                .offset(x: 80, y: isSmell ? -120 : 0)
+                .opacity(isSmell ? 0 : 0.8)
+            Text("🌱")
+                .offset(x: 100, y: isSmell ? -80 : 0)
+                .opacity(isSmell ? 0 : 0.8)
             Image(systemName: "person.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 270, height: 270)
+                .frame(width: 200, height: 200)
 
-            ZStack {
-                Image(systemName: "exclamationmark.bubble")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-                    .foregroundColor(.yellow)
-            }
-                .offset(x: 50, y: -120)
+            Image(systemName: "exclamationmark.bubble")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50)
+                .foregroundColor(.yellow)
+                .offset(x: 50, y: -80)
                 .opacity(isFeel ? 1 : 0)
                 .scaleEffect(isFeel ? 1.5 : 0)
                 .onTapGesture {
