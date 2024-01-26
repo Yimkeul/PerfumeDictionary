@@ -28,8 +28,7 @@ struct GenderView: View {
                 Spacer()
                 Group {
                     Text("Different perfume terms for each gender")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.system(.title, weight: .bold))
                         .padding(.bottom, 16)
                     Text("Let's explore the fragrance terminology related to gender that is sometimes incorporated into the names of perfumes.")
                         .font(.title2)

@@ -11,7 +11,7 @@ struct NoteView: View {
     @State private var isAnimation: Bool = false
     @State private var isWind: Bool = false
     @State var isActive: Bool = false
-    @State var isFeel: Bool = false
+    @State var isFeel: Bool = true
 
     @State var isW: CGFloat = UIScreen.main.bounds.width
     @State var isH: CGFloat = UIScreen.main.bounds.height
@@ -23,10 +23,9 @@ struct NoteView: View {
                 Spacer()
                 Group {
                     Text("Changes or stages of fragrance over time")
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.system(.title, weight: .bold))
                         .padding(.bottom, 16)
-                    Text("Typically categorized into Top, Mid, and Base.")
+                    Text("Typically categorized into Top, Middle, and Base.")
                         .font(.title2)
                     Text("Shall we explore the fragrance together by clicking on it?")
                         .font(.title2)
@@ -46,7 +45,7 @@ struct NoteView: View {
                 .frame(width: isS)
 
             if isActive {
-                Dialog(isActive: $isActive)
+                NoteDialog(isActive: $isActive, isS: $isS)
             }
         }
             .onAppear() {
@@ -67,14 +66,13 @@ struct NoteView: View {
     @ViewBuilder
     private func Head(isFeel: Bool) -> some View {
         ZStack {
-            Image("Person")
+            Image(systemName: "person.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 270, height: 270)
 
             ZStack {
-                Image("Exclamation")
-                    .renderingMode(.template)
+                Image(systemName: "exclamationmark.bubble")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 50)

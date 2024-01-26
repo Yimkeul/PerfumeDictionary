@@ -45,7 +45,7 @@ struct Perfume: View {
         HStack {
             ZStack {
                 VStack {
-                    Text("Push me")
+                    Text("Push")
                     Text("👇")
                 }
                     .font(.system(size: 16, weight: .bold))
@@ -54,9 +54,6 @@ struct Perfume: View {
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 2)) {
                             isWind = true
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                                soundManager.playSound(sound: .perfume)
-//                            }
                             soundManager.playSound(sound: .perfume)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 isWind = false
@@ -68,10 +65,11 @@ struct Perfume: View {
                     }
             }.disabled(isWind ? true: false)
             
-            Image("Wind")
+            Image("Wind2")
                 .resizable()
                 .frame(width: 300, height : 80)
                 .scaledToFit()
+                .font(.system(size: 300))
                 .mask {
                 Rectangle()
                     .frame(width: 300, height: 300)
