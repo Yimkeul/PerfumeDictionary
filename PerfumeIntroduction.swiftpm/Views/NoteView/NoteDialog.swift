@@ -10,9 +10,9 @@ import SwiftUI
 struct NoteDialog: View {
     @Binding var isActive: Bool
     @Binding var isS: CGFloat
+    var isType: noteType
 
     @State private var offset: CGFloat = 1000
-    @State private var page: Int = 0
 
     var body: some View {
         ZStack {
@@ -24,16 +24,14 @@ struct NoteDialog: View {
             }
 
             VStack {
-                switch page {
-                case 1:
-                    MidDesc()
-                case 2:
-                    BaseDesc()
-                default:
+                switch isType {
+                case .top:
                     TopDesc()
+                case .mid:
+                    MidDesc()
+                case .base:
+                    BaseDesc()
                 }
-                Spacer()
-                TransBtn()
             }
                 .frame(width: isS - 100, height: isS - 200)
                 .padding()
@@ -81,7 +79,8 @@ struct NoteDialog: View {
                 .lineSpacing(10.0)
             Spacer()
             Divider()
-            Text("🕒 Duration : spray ~ 30 min\n🏷️ Type : Lighter types of Citrus, Green, Aldehyde, Fruit, Floral etc")
+                .padding(.bottom, 16)
+            Text("🕒 Duration : spray ~ 30 min\n🏷️ Type : Clean, Citrus, Water, Creamy/Edible, Fruit etc.")
                 .font(.system(size: 20, weight: .medium))
                 .multilineTextAlignment(.leading)
                 .lineSpacing(10.0)
@@ -93,50 +92,50 @@ struct NoteDialog: View {
 
     @ViewBuilder
     private func MidDesc() -> some View {
-        VStack {
-            Text("제목2")
-                .font(.system(size: 50, weight: .bold))
-                .padding(.bottom, 24)
-            Text("설명")
-                .font(.system(size: 30, weight: .semibold))
-            Text("가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼")
+        VStack(alignment: .leading) {
+            Text("Middle Note")
+                .font(.system(size: 48, weight: .bold))
+                .padding(.top, 16)
+            Spacer()
+            MultiColoredText(originalText: "Also called Soul Note or Heart Note, it is a middle scent that helps create harmony when combining several scents.\nThe volatilization speed is the second fastest after the top notes, and the theme and character of the perfume stand out the most."
+                             , coloredSubstrings: [("Soul Note", .pink), ("Heart Note", .pink), ("theme", .pink), ("character", .pink)])
+                .font(.system(size: 25, weight: .medium))
+                .multilineTextAlignment(.leading)
+                .lineSpacing(10.0)
+            Spacer()
+            Divider()
+                .padding(.bottom, 16)
+            Text("🕒 Duration : 30 ~ 60 min\n🏷️ Type : Green, Herbal, Light Floral, Heavy Floral, Smoke/Incense, Rose, Spice")
+                .font(.system(size: 20, weight: .medium))
+                .multilineTextAlignment(.leading)
+                .lineSpacing(10.0)
+
             Spacer()
         }
     }
 
     @ViewBuilder
     private func BaseDesc() -> some View {
-        VStack {
-            Text("제목3")
-                .font(.system(size: 50, weight: .bold))
-                .padding(.bottom, 24)
-            Text("설명")
-                .font(.system(size: 30, weight: .semibold))
-            Text("가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼가낟라ㅏㄹ망러미나얾;니ㅏ얼")
-        }
-    }
-
-    @ViewBuilder
-    private func TransBtn() -> some View {
-        HStack {
-            Button {
-                page -= 1
-            } label: {
-                Image(systemName: "chevron.left")
-                    .font(.system(size: 24, weight: .bold))
-            }.disabled(page == 0 ? true : false)
+        VStack(alignment: .leading) {
+            Text("Base Note")
+                .font(.system(size: 48, weight: .bold))
+                .padding(.top, 16)
+            Spacer()
+            MultiColoredText(originalText: "Also called First Note or Head Note.\nThis is the first scent you smell when you spray perfume and can be said to be your first impression of the perfume. Since it is a scent that appears immediately after trying it on, it is a scent that is difficult for people other than yourself to smell."
+                             , coloredSubstrings: [("First Note", .pink), ("Head Note", .pink), ("first impression", .pink)])
+                .font(.system(size: 25, weight: .medium))
+                .multilineTextAlignment(.leading)
+                .lineSpacing(10.0)
+            Spacer()
+            Divider()
+                .padding(.bottom, 16)
+            Text("🕒 Duration : spray ~ 30 min\n🏷️ Type : Lighter types of Citrus, Green, Aldehyde, Fruit, Floral etc")
+                .font(.system(size: 20, weight: .medium))
+                .multilineTextAlignment(.leading)
+                .lineSpacing(10.0)
 
             Spacer()
-
-            Button {
-                page += 1
-            } label: {
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 24, weight: .bold))
-            }.disabled(page == 2 ? true : false)
         }
-            .padding(.horizontal)
-            .padding(.bottom, 16)
     }
 
     private func close () {

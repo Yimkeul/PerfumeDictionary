@@ -7,15 +7,29 @@
 
 import SwiftUI
 
-struct NoteView: View {
-    @State private var isAnimation: Bool = false
-    @State private var isWind: Bool = false
-    @State var isActive: Bool = false
-    @State var isFeel: Bool = true
+enum noteType {
+    case top
+    case mid
+    case base
+}
 
+struct NoteView: View {
+    @State private var notePage: Int = 0
+    @State var isActive: Bool = false
     @State var isW: CGFloat = UIScreen.main.bounds.width
     @State var isH: CGFloat = UIScreen.main.bounds.height
     @State var isS: CGFloat = 0
+    
+    var type: noteType {
+           switch notePage {
+           case 1:
+               return .mid
+           case 2:
+               return .base
+           default:
+               return .top
+           }
+       }
 
     var body: some View {
         ZStack {
@@ -32,27 +46,31 @@ struct NoteView: View {
                 }
                     .foregroundStyle(.black)
                 Spacer().frame(maxHeight: 120)
-                HStack {
-                    Spacer()
-                    Perfume(isAnimation: $isAnimation, isWind: $isWind, isFeel: $isFeel)
-                    Spacer()
-                    Head(isFeel: isFeel)
-                    Spacer()
+                
+                VStack(spacing: 100) {
+                    switch notePage {
+                    case 1:
+                        MidNoteView(isActive: $isActive, isType: type)
+                    case 2:
+                        BaseNoteView(isActive: $isActive, isType: type)
+                    default:
+                        TopNoteView(isActive: $isActive, isType: type)
+                        
+                    }
+                    TransBtn()
                 }
+            
                 Spacer()
             }
                 .padding()
                 .frame(width: isS)
 
             if isActive {
-                NoteDialog(isActive: $isActive, isS: $isS)
+                NoteDialog(isActive: $isActive, isS: $isS, isType: type)
             }
+            
         }
             .onAppear() {
-            withAnimation(.linear(duration: 1)
-                .repeatForever(autoreverses: true)) {
-                isAnimation = true
-            }
             isActive = false
             isS = min(isW, isH)
         }
@@ -62,30 +80,31 @@ struct NoteView: View {
             isS = min(isW, isH)
         }
     }
-
+    
     @ViewBuilder
-    private func Head(isFeel: Bool) -> some View {
-        ZStack {
-            Image(systemName: "person.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 270, height: 270)
+    private func TransBtn() -> some View {
+        HStack {
+            Button {
+                notePage -= 1
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 24, weight: .bold))
+            }.disabled(notePage == 0 ? true : false)
 
-            ZStack {
-                Image(systemName: "exclamationmark.bubble")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-                    .foregroundColor(.yellow)
-            }
-                .offset(x: 50, y: -120)
-                .opacity(isFeel ? 1 : 0)
-                .scaleEffect(isFeel ? 1.5 : 0)
-                .onTapGesture {
-                isActive = true
-            }
+            Spacer()
+
+            Button {
+                notePage += 1
+            } label: {
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 24, weight: .bold))
+            }.disabled(notePage == 2 ? true : false)
         }
+            .padding(.horizontal)
+            .padding(.bottom, 16)
     }
+
+    
 }
 
 #Preview {
