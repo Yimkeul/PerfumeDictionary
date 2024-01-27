@@ -43,6 +43,10 @@ struct NoteView: View {
                         .font(.title2)
                     Text("Shall we explore the fragrance together by clicking on it?")
                         .font(.title2)
+                    
+                    Text("✨Touch Exclamation Mark✨")
+                        .font(.system(size: 20, weight: .semibold))
+                        .padding(.top, 8)
                 }
                     .foregroundStyle(.black)
                 Spacer().frame(maxHeight: 120)

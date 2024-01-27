@@ -16,7 +16,7 @@ struct TopNoteView: View {
     @State var isWind: Bool = false
     @State var isSmell: Bool = false
     @State var isAnimation: Bool = false
-    
+
     @State var isFeelScent: Bool = false
 
     private let soundManager = SoundManager.instance
@@ -30,6 +30,7 @@ struct TopNoteView: View {
                         Text("Push")
                         Text("👇")
                     }
+                        .foregroundColor(.black)
                         .font(.system(size: 16, weight: .bold))
                         .offset(y: isAnimation ? (-150) - 35: (-150) - 25)
                     MiniPefume()
@@ -42,7 +43,7 @@ struct TopNoteView: View {
                                 isFeelScent = true
                                 withAnimation(.easeInOut(duration: 1).speed(0.5)
                                     .repeatForever(autoreverses: false)) {
-                                        isSmell = true
+                                    isSmell = true
                                 }
                                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
                                     isFeel = true
@@ -52,7 +53,7 @@ struct TopNoteView: View {
                     }
                 }.disabled(isWind ? true : false)
 
-                Image("Wind2")
+                Image("Wind")
                     .resizable()
                     .frame(width: 300, height: 80)
                     .scaledToFit()
@@ -120,7 +121,7 @@ struct TopNoteView: View {
                     .offset(x: 100, y: isSmell ? -80 : 0)
                     .opacity(isSmell ? 0 : 0.8)
             }
-            
+
 
             Image(systemName: "person.fill")
                 .resizable()
@@ -132,7 +133,7 @@ struct TopNoteView: View {
                 .scaledToFit()
                 .frame(width: 50)
                 .foregroundColor(.yellow)
-                .offset(x: 50, y: -80)
+                .offset(x: 50, y: isAnimation ? -80 : -90)
                 .opacity(isFeel ? 1 : 0)
                 .scaleEffect(isFeel ? 1.5 : 0)
                 .onTapGesture {

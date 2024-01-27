@@ -55,7 +55,7 @@ struct GenderView: View {
         }
             .onAppear() {
             isActive = false
-                withAnimation(.linear(duration: 1).repeatForever(autoreverses: true)) {
+            withAnimation(.linear(duration: 1).repeatForever(autoreverses: true)) {
                 isAnimation = true
             }
             isS = min(isW, isH)
@@ -67,17 +67,20 @@ struct GenderView: View {
         }
 
     }
-    
+
     @ViewBuilder
     private func genderBtn(_ gender: genderType) -> some View {
         VStack {
-            HStack(spacing: 0) {
-                Text("Click")
-                    .foregroundStyle(.black)
-                Text("👇")
-            }.offset(y: isAnimation ? 0 : 10)
+            ZStack {
+                VStack {
+                    Text("Touch")
+                    Text("👇")
+                }
+            }
+                .foregroundStyle(.black)
                 .font(.system(size: 16, weight: .bold))
-                .offset(x: -10)
+                .offset(x: -20, y: isAnimation ? 0 : 10)
+            
             Button {
                 genderType = gender
                 isActive = true
