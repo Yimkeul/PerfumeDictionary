@@ -1,6 +1,6 @@
 //
 //  Menu.swift
-//  
+//
 //
 //  Created by yimkeul on 1/18/24.
 //
@@ -19,7 +19,7 @@ struct Menu: Identifiable, Hashable {
 enum MenuType: String, CaseIterable {
     case gender
     case note
-    case volume
+    case Types
     case fragrance
 
     @ViewBuilder
@@ -29,8 +29,8 @@ enum MenuType: String, CaseIterable {
             GenderView()
         case .note:
             NoteView()
-        case .volume:
-            VolumeView()
+        case .Types:
+            TypesView()
         case .fragrance:
             FragranceView()
         }
@@ -41,7 +41,7 @@ enum MenuType: String, CaseIterable {
 let MenuData: [Menu] = [
     Menu(title: "Gender", desc: "Different perfume terms for each gender", image: "Gender", type: .gender),
     Menu(title: "Note", desc: "Changes or stages of fragrance over time", image: "Note", type: .note),
-    Menu(title: "Volume", desc: "Perfume description", image: "Perfume", type: .volume),
+    Menu(title: "Types", desc: "Classification according to the concentration", image: "Perfume", type: .Types),
     Menu(title: "Fragrance", desc: "Note description", image: "Smell", type: .fragrance)
 ]
 

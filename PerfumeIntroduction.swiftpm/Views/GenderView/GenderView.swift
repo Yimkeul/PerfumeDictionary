@@ -18,24 +18,19 @@ struct GenderView: View {
     @State var isActive: Bool = false
     @State var isAnimation: Bool = false
 
-    @State var isW: CGFloat = UIScreen.main.bounds.width
-    @State var isH: CGFloat = UIScreen.main.bounds.height
-    @State var isS: CGFloat = 0
-
     var body: some View {
+
         ZStack {
             VStack {
-                Spacer()
                 Group {
                     Text("Different perfume terms for each gender")
                         .font(.system(.title, weight: .bold))
                         .padding(.bottom, 16)
                     Text("Let's explore the fragrance terminology related to gender that is sometimes incorporated into the names of perfumes.")
                         .font(.title2)
-                }.foregroundColor(.black)
-
-                Spacer().frame(maxHeight: 120)
-
+                }
+                    .foregroundStyle(.black)
+                Spacer()
                 HStack {
                     Spacer()
                     genderBtn(.man)
@@ -45,26 +40,29 @@ struct GenderView: View {
                 }
                 Spacer()
                 Text("In recent years, gender-neutral perfumes have been widely introduced, so the terms mentioned above may not be used as commonly. Just keep that in mind.")
+                    .padding()
                 Spacer()
             }
-                .padding()
-                .frame(width: isS)
             if isActive {
-                GenderDialog(genderType: $genderType, isActive: $isActive, isS: $isS)
+                GenderDialog(genderType: $genderType, isActive: $isActive)
             }
         }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+            Image("BGImg")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
             .onAppear() {
             isActive = false
             withAnimation(.linear(duration: 1).repeatForever(autoreverses: true)) {
                 isAnimation = true
             }
-            isS = min(isW, isH)
         }
-            .onChange(of: UIScreen.main.bounds.size) { _ in
-            isW = UIScreen.main.bounds.width
-            isH = UIScreen.main.bounds.height
-            isS = min(isW, isH)
-        }
+
+
+
 
     }
 
@@ -80,7 +78,7 @@ struct GenderView: View {
                 .foregroundStyle(.black)
                 .font(.system(size: 16, weight: .bold))
                 .offset(x: -20, y: isAnimation ? 0 : 10)
-            
+
             Button {
                 genderType = gender
                 isActive = true

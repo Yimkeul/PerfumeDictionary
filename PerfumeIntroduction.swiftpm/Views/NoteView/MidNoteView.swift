@@ -17,10 +17,10 @@ struct MidNoteView: View {
 
     var body: some View {
 
-        VStack {
+        VStack(spacing: 0) {
             Feel(isFeel: isFeel)
             Person()
-        } .frame(height: 270)
+        } .frame(maxHeight: 270)
             .onAppear() {
             withAnimation(.easeInOut(duration: 1).speed(0.5)
                 .repeatForever(autoreverses: false)) {
@@ -49,9 +49,9 @@ struct MidNoteView: View {
             Image(systemName: "exclamationmark.bubble")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 50)
+                .frame(width: 40)
                 .foregroundColor(.yellow)
-                .offset(x: 10, y: -65)
+                .offset(x: 10, y: -55)
                 .opacity(isFeel ? 1 : 0)
                 .scaleEffect(isFeel ? 1.5 : 0)
                 .onTapGesture {

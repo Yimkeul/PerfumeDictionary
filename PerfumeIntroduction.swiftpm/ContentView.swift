@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var isOnboard: Bool = false
     // 네비게이션 변수
     @State private var selection: MenuType?
+    private var size = UIScreen.main.bounds.size
 
     var body: some View {
         NavigationSplitView {
@@ -28,13 +29,29 @@ struct ContentView: View {
             }
         } detail: {
             if let focus = selection {
-                ZStack {
-                    Image("BGImg")
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea()
-                    MenuType.view(focus)
-                }
+//                ZStack {
+//                    Image("BGImg")
+//                        .resizable()
+//                        .scaledToFill()
+//                        .ignoresSafeArea()
+//                    MenuType.view(focus).background {
+//                        Image("BGImg")
+//                            .resizable()
+//                            .scaledToFill()
+//                            .ignoresSafeArea()
+                        
+                            
+//                            .resizable()
+//                            .scaledToFill()
+                        
+                            
+//                    }
+//                }
+                
+                MenuType.view(focus)
+                    
+                
+                    
             } else {
                 ZStack {
                     Image("BGImg")

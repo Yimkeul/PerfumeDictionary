@@ -19,17 +19,17 @@ struct NoteView: View {
     @State var isW: CGFloat = UIScreen.main.bounds.width
     @State var isH: CGFloat = UIScreen.main.bounds.height
     @State var isS: CGFloat = 0
-    
+
     var type: noteType {
-           switch notePage {
-           case 1:
-               return .mid
-           case 2:
-               return .base
-           default:
-               return .top
-           }
-       }
+        switch notePage {
+        case 1:
+            return .mid
+        case 2:
+            return .base
+        default:
+            return .top
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -39,19 +39,17 @@ struct NoteView: View {
                     Text("Changes or stages of fragrance over time")
                         .font(.system(.title, weight: .bold))
                         .padding(.bottom, 16)
-                    Text("Typically categorized into Top, Middle, and Base.")
+                
+                    Text("Typically categorized into Top, Middle, and Base. Shall we explore the fragrance together by clicking on it?")
                         .font(.title2)
-                    Text("Shall we explore the fragrance together by clicking on it?")
-                        .font(.title2)
-                    
+
                     Text("✨Touch Exclamation Mark✨")
                         .font(.system(size: 20, weight: .semibold))
                         .padding(.top, 8)
                 }
                     .foregroundStyle(.black)
-                Spacer().frame(maxHeight: 120)
-                
-                VStack(spacing: 100) {
+                Spacer()
+                VStack(spacing: 50) {
                     switch notePage {
                     case 1:
                         MidNoteView(isActive: $isActive, isType: type)
@@ -59,20 +57,21 @@ struct NoteView: View {
                         BaseNoteView(isActive: $isActive, isType: type)
                     default:
                         TopNoteView(isActive: $isActive, isType: type)
-                        
                     }
                     TransBtn()
                 }
-            
+                .padding(.top, 50)
+                
                 Spacer()
             }
                 .padding()
-                .frame(width: isS)
+                .frame(maxWidth: isS, maxHeight: isS)
+//                .frame(width: isS)
 
             if isActive {
                 NoteDialog(isActive: $isActive, isS: $isS, isType: type)
             }
-            
+
         }
             .onAppear() {
             isActive = false
@@ -84,7 +83,7 @@ struct NoteView: View {
             isS = min(isW, isH)
         }
     }
-    
+
     @ViewBuilder
     private func TransBtn() -> some View {
         HStack {
@@ -92,7 +91,7 @@ struct NoteView: View {
                 notePage -= 1
             } label: {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 40, weight: .bold))
             }.disabled(notePage == 0 ? true : false)
 
             Spacer()
@@ -101,14 +100,14 @@ struct NoteView: View {
                 notePage += 1
             } label: {
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 40, weight: .bold))
             }.disabled(notePage == 2 ? true : false)
         }
             .padding(.horizontal)
             .padding(.bottom, 16)
     }
 
-    
+
 }
 
 #Preview {
