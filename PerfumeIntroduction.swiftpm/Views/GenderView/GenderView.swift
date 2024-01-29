@@ -19,7 +19,6 @@ struct GenderView: View {
     @State var isAnimation: Bool = false
 
     var body: some View {
-
         ZStack {
             VStack {
                 Group {
@@ -30,6 +29,7 @@ struct GenderView: View {
                         .font(.title2)
                 }
                     .foregroundStyle(.black)
+
                 Spacer()
                 HStack {
                     Spacer()
@@ -40,14 +40,16 @@ struct GenderView: View {
                 }
                 Spacer()
                 Text("In recent years, gender-neutral perfumes have been widely introduced, so the terms mentioned above may not be used as commonly. Just keep that in mind.")
-                    .padding()
                 Spacer()
             }
+            .padding()
             if isActive {
                 GenderDialog(genderType: $genderType, isActive: $isActive)
             }
         }
+            
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .navigationBarTitleDisplayMode(.inline)
             .background(
             Image("BGImg")
                 .resizable()
@@ -60,20 +62,14 @@ struct GenderView: View {
                 isAnimation = true
             }
         }
-
-
-
-
     }
 
     @ViewBuilder
     private func genderBtn(_ gender: genderType) -> some View {
         VStack {
-            ZStack {
-                VStack {
-                    Text("Touch")
-                    Text("👇")
-                }
+            VStack {
+                Text("Touch")
+                Text("👇")
             }
                 .foregroundStyle(.black)
                 .font(.system(size: 16, weight: .bold))

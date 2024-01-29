@@ -49,13 +49,6 @@ struct GenderDialog: View {
             Spacer()
         }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(
-            LinearGradient(gradient: Gradient(colors: [.black, .gray]),
-                           startPoint: .bottom,
-                           endPoint: .top)
-                .ignoresSafeArea()
-        )
-
             .toolbar(content: {
             Button {
                 close()
@@ -65,6 +58,12 @@ struct GenderDialog: View {
                     .foregroundColor(Color.accentColor)
             }
         })
+            .background(
+            LinearGradient(gradient: Gradient(colors: [.black, .gray]),
+                           startPoint: .bottom,
+                           endPoint: .top)
+                .ignoresSafeArea()
+        )
             .offset(y: offset)
             .onAppear() {
             withAnimation(.easeIn) {

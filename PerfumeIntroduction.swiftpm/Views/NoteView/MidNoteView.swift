@@ -16,11 +16,10 @@ struct MidNoteView: View {
     @State var isSmell: Bool = false
 
     var body: some View {
-
         VStack(spacing: 0) {
             Feel(isFeel: isFeel)
             Person()
-        } .frame(maxHeight: 270)
+        }
             .onAppear() {
             withAnimation(.easeInOut(duration: 1).speed(0.5)
                 .repeatForever(autoreverses: false)) {

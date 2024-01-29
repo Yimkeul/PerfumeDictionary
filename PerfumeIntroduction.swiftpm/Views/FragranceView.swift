@@ -9,7 +9,18 @@ import SwiftUI
 
 struct FragranceView: View {
     var body: some View {
-        CarouselScrollView2()
+        ZStack {
+            CarouselScrollView2()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarTitleDisplayMode(.inline)
+        .background(
+        Image("BGImg")
+            .resizable()
+            .scaledToFill()
+            .ignoresSafeArea()
+    )
+        
     }
 }
 

@@ -46,8 +46,10 @@ struct MultiColoredText: View {
                 
                 result = result + Text(beforeRange)
                     .foregroundColor(.black)
+                    .fontWeight(.regular)
                 result = result + Text(coloredText)
                     .foregroundColor(color)
+                    .fontWeight(.medium)
                 
                 currentIndex = range.upperBound
             }

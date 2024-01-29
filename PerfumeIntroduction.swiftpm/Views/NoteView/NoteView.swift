@@ -16,9 +16,6 @@ enum noteType {
 struct NoteView: View {
     @State private var notePage: Int = 0
     @State var isActive: Bool = false
-    @State var isW: CGFloat = UIScreen.main.bounds.width
-    @State var isH: CGFloat = UIScreen.main.bounds.height
-    @State var isS: CGFloat = 0
 
     var type: noteType {
         switch notePage {
@@ -34,7 +31,6 @@ struct NoteView: View {
     var body: some View {
         ZStack {
             VStack {
-                Spacer()
                 Group {
                     Text("Changes or stages of fragrance over time")
                         .font(.system(.title, weight: .bold))
@@ -42,14 +38,10 @@ struct NoteView: View {
                 
                     Text("Typically categorized into Top, Middle, and Base. Shall we explore the fragrance together by clicking on it?")
                         .font(.title2)
-
-                    Text("✨Touch Exclamation Mark✨")
-                        .font(.system(size: 20, weight: .semibold))
-                        .padding(.top, 8)
                 }
                     .foregroundStyle(.black)
                 Spacer()
-                VStack(spacing: 50) {
+                VStack {
                     switch notePage {
                     case 1:
                         MidNoteView(isActive: $isActive, isType: type)
@@ -58,29 +50,25 @@ struct NoteView: View {
                     default:
                         TopNoteView(isActive: $isActive, isType: type)
                     }
-                    TransBtn()
-                }
-                .padding(.top, 50)
-                
+                }.frame(height: 300)
                 Spacer()
-            }
-                .padding()
-                .frame(maxWidth: isS, maxHeight: isS)
-//                .frame(width: isS)
-
+                TransBtn()
+                Spacer()
+            }.padding()
             if isActive {
-                NoteDialog(isActive: $isActive, isS: $isS, isType: type)
+                NoteDialog(isActive: $isActive, isType: type)
             }
-
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarTitleDisplayMode(.inline)
+        .background(
+        Image("BGImg")
+            .resizable()
+            .scaledToFill()
+            .ignoresSafeArea()
+    )
             .onAppear() {
             isActive = false
-            isS = min(isW, isH)
-        }
-            .onChange(of: UIScreen.main.bounds.size) { _ in
-            isW = UIScreen.main.bounds.width
-            isH = UIScreen.main.bounds.height
-            isS = min(isW, isH)
         }
     }
 
@@ -95,7 +83,9 @@ struct NoteView: View {
             }.disabled(notePage == 0 ? true : false)
 
             Spacer()
-
+            Text("✨Touch Exclamation Mark✨")
+                .font(.system(size: 20, weight: .semibold))
+            Spacer()
             Button {
                 notePage += 1
             } label: {
@@ -104,10 +94,7 @@ struct NoteView: View {
             }.disabled(notePage == 2 ? true : false)
         }
             .padding(.horizontal)
-            .padding(.bottom, 16)
     }
-
-
 }
 
 #Preview {

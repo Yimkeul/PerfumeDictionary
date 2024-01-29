@@ -20,7 +20,7 @@ struct BaseNoteView: View {
 
         VStack {
             Feel(isFeel: isFeel)
-        } .frame(height: 270)
+        }
             .onAppear() {
             withAnimation(.easeInOut(duration: 1).speed(0.5)
                 .repeatForever(autoreverses: false)) {

@@ -25,14 +25,14 @@ struct TopNoteView: View {
         HStack {
             Spacer()
             HStack {
-                ZStack {
+                VStack {
                     VStack {
                         Text("Push")
                         Text("👇")
                     }
                         .foregroundColor(.black)
                         .font(.system(size: 16, weight: .bold))
-                        .offset(y: isAnimation ? (-150) - 35: (-150) - 25)
+                        .offset(y: isAnimation ? 0 : 10)
                     MiniPefume()
                         .onTapGesture {
                         withAnimation(.easeInOut(duration: 2)) {
@@ -52,7 +52,6 @@ struct TopNoteView: View {
                         }
                     }
                 }.disabled(isWind ? true : false)
-
                 Image("Wind")
                     .resizable()
                     .frame(width: 300, height: 80)
