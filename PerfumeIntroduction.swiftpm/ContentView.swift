@@ -29,29 +29,7 @@ struct ContentView: View {
             }
         } detail: {
             if let focus = selection {
-//                ZStack {
-//                    Image("BGImg")
-//                        .resizable()
-//                        .scaledToFill()
-//                        .ignoresSafeArea()
-//                    MenuType.view(focus).background {
-//                        Image("BGImg")
-//                            .resizable()
-//                            .scaledToFill()
-//                            .ignoresSafeArea()
-                        
-                            
-//                            .resizable()
-//                            .scaledToFill()
-                        
-                            
-//                    }
-//                }
-                
                 MenuType.view(focus)
-                    
-                
-                    
             } else {
                 ZStack {
                     Image("BGImg")

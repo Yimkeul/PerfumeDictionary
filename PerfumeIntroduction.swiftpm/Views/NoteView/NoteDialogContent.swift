@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  NoteDialogContent.swift
 //  
 //
 //  Created by yimkeul on 1/29/24.

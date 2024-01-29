@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  BaseNoteView.swift
 //
 //
 //  Created by yimkeul on 1/27/24.

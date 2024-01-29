@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  NoteDialog.swift
 //
 //
 //  Created by yimkeul on 1/21/24.
@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NoteDialog: View {
     @Binding var isActive: Bool
-//    @Binding var isS: CGFloat
     var isType: noteType
 
     @State private var offset: CGFloat = 1000
