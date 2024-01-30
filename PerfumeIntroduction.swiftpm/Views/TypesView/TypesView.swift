@@ -10,6 +10,11 @@ import SwiftUI
 struct TypesView: View {
     @State var value: Int = 0
     @State var isDrop: Bool = false
+    @State var isEnough: Bool = false
+
+    @State var offsetY: CGFloat = 0
+    @State var opacity: Double = 0
+
     var body: some View {
 
         ZStack {
@@ -22,41 +27,62 @@ struct TypesView: View {
                         .font(.title2)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
-                    Text("✨Let's make it✨")
+                    Text("✨Let's try it✨")
                         .font(.system(size: 20, weight: .semibold))
                         .padding(.top, 8)
                 }
                     .foregroundStyle(.black)
                 Spacer()
+
                 VStack(spacing: -30) {
-                    Button {
-                        
-                        withAnimation(.easeOut(duration: 1)) {
-                            if value < 30 {
-                                isDrop = true
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    isDrop = false
-                                    value += 1
+                    ZStack {
+                        if value >= 30  {
+                            Text("Enough!")
+                                .bold()
+                                .offset(y: offsetY)
+                                .opacity(opacity)
+                        }
+                        Button {
+                            if value >= 30 {
+                                withAnimation(.easeOut(duration: 1)) {
+                                    isEnough = true
+                                    offsetY = -10
+                                    opacity = 1
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                        isEnough = false
+                                        offsetY = 0
+                                        opacity = 0
+                                    }
                                 }
                             }
+                            
+
+                            withAnimation(.easeOut(duration: 0.5)) {
+                                if value < 30 {
+                                    isDrop = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        isDrop = false
+                                        value += 1
+                                    }
+                                }
+                            }
+
+                        } label: {
+                            Image("SpoidAndHand")
+                                .resizable()
+                                .frame(width: 200, height: 200)
+                                .scaledToFit()
                         }
-                        
-                    } label: {
-                        Image("SpoidAndHand")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .scaledToFit()
+                            .offset(x: -100)
+                            .disabled(isDrop || isEnough ? true : false)
                     }
-                        .offset(x: -100)
-                        .disabled(isDrop ? true : false)
-                    
-                    
+
+
                     Text("💧")
                         .font(.system(size: 60))
-                            .offset(y: isDrop ? 100 : -20)
-                            .opacity(isDrop ? 1 : 0)
-                            .scaleEffect(isDrop ? 1 : 0.6)
-
+                        .offset(y: isDrop ? 100 : -10)
+                        .opacity(isDrop ? 1 : 0)
+                        .scaleEffect(isDrop ? 1 : 0.6)
 
 
                     ZStack {
@@ -68,8 +94,8 @@ struct TypesView: View {
                             .foregroundStyle(.green)
                             .font(.system(size: 30, weight: .bold))
                             .offset(y: 95)
-                    }
-                }.frame(height: 300)
+                    }.frame(height: 300)
+                }
                 Spacer()
             }
                 .padding()
