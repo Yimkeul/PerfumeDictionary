@@ -47,7 +47,6 @@ struct GenderView: View {
                 GenderDialog(genderType: $genderType, isActive: $isActive)
             }
         }
-            
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationBarTitleDisplayMode(.inline)
             .background(
