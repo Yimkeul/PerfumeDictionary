@@ -7,15 +7,30 @@
 
 import SwiftUI
 
+enum perfumeType {
+    case edc
+    case edt
+    case edp
+    case ep
+}
+
 struct TypesView: View {
     @State var value: Int = 0
     @State var isDrop: Bool = false
     @State var isEnough: Bool = false
 
     @State var isAnimation: Bool = false
-    @State var isTest: Bool = false
+    @State var isActive: Bool = false
     @State var offsetY: CGFloat = 0
     @State var opacity: Double = 0
+
+    @State var isDisalbe1: Bool = true
+    @State var isDisalbe2: Bool = true
+    @State var isDisalbe3: Bool = true
+    @State var isDisalbe4: Bool = true
+    @State var isType: perfumeType = .edc
+    
+    private let soundManager = SoundManager.instance
 
     var body: some View {
         ZStack {
@@ -24,7 +39,7 @@ struct TypesView: View {
                     Text("Classification according to the concentration")
                         .font(.system(.title, weight: .bold))
                         .padding(.bottom, 16)
-                    Text("Typically categorized into Perfume Extrait(Perfume), Eau De Perfume(EDP), Eau De Toillete(EDT), Eau De Cologne(EDC)")
+                    Text("Typically categorized into Extrait Perfume(EP, Perfume), Eau De Perfume(EDP), Eau De Toillete(EDT), Eau De Cologne(EDC)")
                         .font(.title2)
                     Text("✨Let's try it✨")
                         .font(.system(size: 20, weight: .semibold))
@@ -37,6 +52,9 @@ struct TypesView: View {
                 Spacer()
             }
                 .padding()
+            if isActive {
+                TypesDialog(isActive: $isActive, isType: isType)
+            }
         }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationBarTitleDisplayMode(.inline)
@@ -47,7 +65,7 @@ struct TypesView: View {
                 .ignoresSafeArea()
         ) .onAppear {
             isAnimation = true
-            isTest = true
+            isActive =  false
         }
     }
 
@@ -89,17 +107,54 @@ struct TypesView: View {
                 }
             }
             ZStack {
-                ProgressView(value: Double(value), total: 30)
-                    .progressViewStyle(RoundedRectProgressViewStyle())
-                    .animation(.linear, value: value)
-                // TODO: 퍼퓸 종류별 버튼 만들기 (value 값에 따른 enable/disable) 도 설정하기
-                Text("<<")
-                    .offset(x: 10)
+                VStack {
+                    VStack {
+                        Text("Check Enable Tag")
+                        Text("👇")
+                    }
+                        .foregroundStyle(.black)
+                        .font(.system(size: 16, weight: .bold))
+                        .offset(x: 50, y: isAnimation ? -60 : -50)
+                        .animation(.linear(duration: 1).repeatForever(autoreverses: true), value: isAnimation)
+                    ProgressView(value: Double(value), total: 30)
+                        .progressViewStyle(RoundedRectProgressViewStyle(value: $value))
+                        .animation(.linear, value: value)
+                }
+                VStack(spacing: 0) {
+                    Spacer()
+                    cLabel("EP", isDisable: isDisalbe4, perfumeType: .ep)
+                        .offset(x: 70, y: -130)
+                    cLabel("EDP", isDisable: isDisalbe3, perfumeType: .edp)
+                        .offset(x: 70, y: -60)
+                    cLabel("EDT", isDisable: isDisalbe2, perfumeType: .edt)
+                        .offset(x: 70, y: -40)
+                    cLabel("EDC", isDisable: isDisalbe1, perfumeType: .edc)
+                        .offset(x: 70, y: -30)
+                }
             }
-        }.frame(height: 420)
+        }
+            .frame(height: 420)
             .padding(.bottom, 8)
     }
 
+
+    @ViewBuilder
+    private func cLabel(_ title: String, isDisable: Bool, perfumeType: perfumeType) -> some View {
+        Button {
+            isActive = true
+            isType = perfumeType
+        } label: {
+            VStack(alignment: .leading) {
+                HStack(alignment: .bottom) {
+                    Text("🏷️")
+                    Text(title)
+                        .foregroundStyle(isDisable ? Color.Disable : .black)
+                        .bold()
+                    Spacer()
+                }.frame(width: 80)
+            }
+        }.disabled(isDisable)
+    }
 
     @ViewBuilder
     private func spoidBtn() -> some View {
@@ -128,9 +183,28 @@ struct TypesView: View {
                 withAnimation(.easeOut(duration: 0.5)) {
                     if value < 30 {
                         isDrop = true
+                        soundManager.playSound(sound: .drop)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            
                             isDrop = false
-                            value += 1
+                            if value >= 15 {
+                                value += 5
+                            } else {
+                                value += 1
+                            }
+
+                            if value >= 3 {
+                                isDisalbe1 = false
+                            }
+                            if value >= 5 {
+                                isDisalbe2 = false
+                            }
+                            if value >= 8 {
+                                isDisalbe3 = false
+                            }
+                            if value >= 15 {
+                                isDisalbe4 = false
+                            }
                         }
                     }
                 }

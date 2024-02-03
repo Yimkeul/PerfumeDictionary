@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RoundedRectProgressViewStyle: ProgressViewStyle {
+    @Binding var value: Int
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader {
             geo in
@@ -16,7 +17,13 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
                 .frame(width: 30, height: 420)
 
             RoundedRectangle(cornerRadius: 14)
-                .fill(Color.Water)
+                .fill(
+                (0...2).contains(value) ? Color.white:
+                    (3...5).contains(value) ? Color.Water1:
+                    (5...8).contains(value) ? Color.Water2:
+                    (8...15).contains(value) ? Color.Water3:
+                    Color.Water4
+            )
                 .frame(width: 30, height: CGFloat(configuration.fractionCompleted ?? 0) * 420)
         }
             .frame(width: 30)
@@ -24,3 +31,7 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
 
     }
 }
+
+
+
+

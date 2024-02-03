@@ -14,6 +14,7 @@ class SoundManager {
     var player: AVAudioPlayer?
     enum SoundOption: String {
         case perfume = "perfumeSound"
+        case drop = "drop"
     }
 
     func playSound(sound: SoundOption) {
@@ -32,6 +33,9 @@ class SoundManager {
 
 extension Color {
     static let BG = Color("BG")
-    static let Water = Color("Water")
+    static let Water1 = Color("Water1")
+    static let Water2 = Color("Water2")
+    static let Water3 = Color("Water3")
+    static let Water4 = Color("Water4")
     static let Disable = Color("Disable")
 }
