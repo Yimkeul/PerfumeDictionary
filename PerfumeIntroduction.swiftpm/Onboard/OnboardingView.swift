@@ -15,24 +15,17 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Image("BGImg")
-                .resizable()
-                .scaledToFill()
-                .opacity(0.5)
-                .ignoresSafeArea(.container, edges: .bottom)
-
             VStack {
                 Spacer()
                 Text("Perfume Introduction")
                     .font(.system(size: 50, weight: .bold))
-
                 Spacer()
                 Image("Intro")
                     .imageScale(.large)
                 Spacer()
                 Text("Perfume has a term for each characteristic")
                     .font(.system(size: 30, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.black)
                 Spacer()
                 Button {
                     isAppear.toggle()
@@ -55,6 +48,14 @@ struct OnboardingView: View {
                 onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarTitleDisplayMode(.inline)
+        .background(
+        Image("BGImg")
+            .resizable()
+            .scaledToFill()
+            .ignoresSafeArea()
+    )
             .onAppear() {
             onboardEffect.setItem()
         }
