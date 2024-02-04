@@ -27,14 +27,7 @@ struct FlippedCardView: View {
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
                 .animation(isFlipped ? .linear : .linear.delay(0.35), value: isFlipped)
-            
         }
-        .onTapGesture {
-            withAnimation(.easeIn){
-                isFlipped.toggle()
-            }
-        }
-        
     }
 }
 

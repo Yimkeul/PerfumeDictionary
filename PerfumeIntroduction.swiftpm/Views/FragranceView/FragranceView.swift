@@ -18,9 +18,14 @@ struct FragranceView: View {
                     .scaleEffect(currentIndex == index ? 1.0 : 0.8)
                     .offset(
                     x: CGFloat(index - currentIndex) * 300 + dragOffset,
-                    y: currentIndex == index ? 0 : CGFloat(abs(currentIndex - index) * -80)
-                ).frame(maxWidth: .infinity, maxHeight: .infinity)
-
+                    y: currentIndex == index ? 0 : CGFloat(abs(currentIndex - index) * -80))
+                    .onTapGesture {
+                        if currentIndex == index {
+                            withAnimation(.easeIn) {
+                                isFlipped[index].toggle()
+                            }
+                        }
+                    }
             }
             .gesture(
             DragGesture()
