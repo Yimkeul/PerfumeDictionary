@@ -24,10 +24,8 @@ struct TypesView: View {
     @State var offsetY: CGFloat = 0
     @State var opacity: Double = 0
 
-    @State var isDisalbe1: Bool = true
-    @State var isDisalbe2: Bool = true
-    @State var isDisalbe3: Bool = true
-    @State var isDisalbe4: Bool = true
+    
+    @State var isDisables: [Bool] = [true,true,true,true]
     @State var isType: perfumeType = .edc
     
     private let soundManager = SoundManager.instance
@@ -122,13 +120,13 @@ struct TypesView: View {
                 }
                 VStack(spacing: 0) {
                     Spacer()
-                    cLabel("EP", isDisable: isDisalbe4, perfumeType: .ep)
+                    cLabel("EP", isDisable: isDisables[3], perfumeType: .ep)
                         .offset(x: 70, y: -130)
-                    cLabel("EDP", isDisable: isDisalbe3, perfumeType: .edp)
+                    cLabel("EDP", isDisable: isDisables[2], perfumeType: .edp)
                         .offset(x: 70, y: -60)
-                    cLabel("EDT", isDisable: isDisalbe2, perfumeType: .edt)
+                    cLabel("EDT", isDisable: isDisables[1], perfumeType: .edt)
                         .offset(x: 70, y: -40)
-                    cLabel("EDC", isDisable: isDisalbe1, perfumeType: .edc)
+                    cLabel("EDC", isDisable: isDisables[0], perfumeType: .edc)
                         .offset(x: 70, y: -30)
                 }
             }
@@ -194,16 +192,16 @@ struct TypesView: View {
                             }
 
                             if value >= 3 {
-                                isDisalbe1 = false
+                                isDisables[0] = false
                             }
                             if value >= 5 {
-                                isDisalbe2 = false
+                                isDisables[1] = false
                             }
                             if value >= 8 {
-                                isDisalbe3 = false
+                                isDisables[2] = false
                             }
                             if value >= 15 {
-                                isDisalbe4 = false
+                                isDisables[3] = false
                             }
                         }
                     }

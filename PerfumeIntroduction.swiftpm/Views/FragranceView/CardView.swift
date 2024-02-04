@@ -13,46 +13,30 @@ struct CardView: View {
     let Desc: String
 
     var body: some View {
-        ZStack {
-            GeometryReader {
-                geo in
-                let top: CGFloat = geo.size.width / 2
-                let left: CGFloat = geo.size.height / 2
-
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(width: 100, height: 50)
-                    .offset(x: 100, y: 50)
-
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(width: 250, height: 50)
-                    .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
-                    .offset(x: 25)
-
+        VStack(spacing: 0) {
+            Rectangle()
+                .fill(Color.black)
+                .frame(width: 250, height: 50)
+                .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
+            Rectangle()
+                .fill(Color.black)
+                .frame(width: 100, height: 50)
+            ZStack {
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: 300, height: 500)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-                    .offset(y: 100)
                     .shadow(radius: 5, y: 10)
-
-
-                line(top, left + 100)
-
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: 250, height: 450)
-                    .offset(x: 25, y: 125)
-                    .overlay(Rectangle().stroke(Color.black, lineWidth: 5).offset(x: 25, y: 125))
-
-                Rectangle()
-                    .fill(Color.white)
-                    .frame(width: 225, height: 425)
-                    .offset(x: 37.5, y: 137.5)
-                    .overlay(Rectangle().stroke(Color.black, lineWidth: 2).offset(x: 37.5, y: 137.5))
+                    .overlay(Rectangle().stroke(Color.black, lineWidth: 5))
 
                 ZStack {
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width: 225, height: 425)
+                        .overlay(Rectangle().stroke(Color.black, lineWidth: 2))
                     VStack(alignment: .leading) {
                         HStack {
                             Text(Title)
@@ -62,19 +46,17 @@ struct CardView: View {
                         Text(Desc)
                             .font(.system(size: 20, weight: .thin))
                         Spacer()
-                    }.padding()
-                }
+                    }
+                    .padding()
                     .frame(width: 225, height: 425)
-                    .offset(x: 37.5, y: 137.5)
-
-
+                }
+                
 
 
             }
         }
-            .frame(width: 300, height: 600)
-
-
+            .fixedSize()
+            .background(Color.clear)
 
     }
 
@@ -102,4 +84,9 @@ struct CardView: View {
             }.stroke(.black, style: StrokeStyle(lineWidth: 10, lineJoin: .round))
         }
     }
+}
+
+
+#Preview {
+    CardView(Title: "Test", Desc: "TTTT")
 }
