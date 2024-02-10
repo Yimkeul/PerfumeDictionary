@@ -31,6 +31,7 @@ class SoundManager {
 
 }
 
+
 extension Color {
     static let BG = Color("BG")
     static let Water1 = Color("Water1")

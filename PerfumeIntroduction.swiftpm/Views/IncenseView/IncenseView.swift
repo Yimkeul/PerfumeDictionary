@@ -21,7 +21,7 @@ struct IncenseView: View {
                         .padding(.bottom, 16)
                     Text("Try imagining a scent based on the image.")
                         .font(.title2)
-                    Text("✨Swipe! And Flip Card✨")
+                    Text("✨Swipe! and Flip Card✨")
                         .font(.system(size: 20, weight: .semibold))
                         .padding(.top, 8)
                 }

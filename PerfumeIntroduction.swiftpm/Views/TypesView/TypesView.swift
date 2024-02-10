@@ -190,19 +190,29 @@ struct TypesView: View {
                             } else {
                                 value += 1
                             }
-
-                            if value >= 3 {
+                            if value == 3 {
                                 isDisables[0] = false
+                                isActive = true
+                                isType = .edc
                             }
-                            if value >= 5 {
+                            if value == 5 {
                                 isDisables[1] = false
+                                isActive = true
+                                isType = .edt
                             }
-                            if value >= 8 {
+                            if value == 8 {
                                 isDisables[2] = false
+                                isActive = true
+                                isType = .edp
                             }
-                            if value >= 15 {
+                            if value == 15 {
                                 isDisables[3] = false
+                                isActive = true
+                                isType = .ep
                             }
+                            
+                            
+                            
                         }
                     }
                 }

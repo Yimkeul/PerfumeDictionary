@@ -17,6 +17,8 @@ struct CardFront: View {
             Rectangle()
                 .fill(Color.black)
                 .frame(width: 75, height: 60)
+                .clipShape(RoundedRectangle(cornerRadius: 8.0, style: .continuous))
+                .offset(y : 8)
             ZStack {
                 Rectangle()
                     .fill(Color.white)

@@ -63,10 +63,10 @@ struct TopNoteView: View {
                         .frame(width: 300, height: 300)
                         .offset(x: isWind ? 300 : -300)
                 }.offset(x: -50, y: -135)
+                Spacer()
+                Feel(isFeel: isFeel)
+                Spacer()
             }
-            Spacer()
-            Feel(isFeel: isFeel)
-            Spacer()
         }
             .onAppear() {
             withAnimation(.linear(duration: 1)

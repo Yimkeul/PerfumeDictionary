@@ -92,6 +92,7 @@ struct GenderDialog: View {
                 .shadow(radius: 5, x: 0, y: 10)
             Text(text)
                 .font(.system(size: 50, weight: .semibold))
+                .foregroundStyle(.black)
         }
             .offset(y: isAnimation ? 0 : 30)
             .opacity(isAnimation ? 1 : 0)

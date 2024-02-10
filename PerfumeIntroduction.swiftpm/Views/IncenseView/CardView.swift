@@ -14,7 +14,7 @@ struct CardView: View {
     let image: String
     var body: some View {
         ZStack {
-            CardBack(image: image)
+            CardBack(image: image, title: title)
                 .rotation3DEffect(
                     .degrees(isFlipped ? 0 : -90),
                 axis: (x: 0.0, y: 1.0, z: 0.0)

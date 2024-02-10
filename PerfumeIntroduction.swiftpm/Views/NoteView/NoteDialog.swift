@@ -11,7 +11,7 @@ struct NoteDialog: View {
     @Binding var isActive: Bool
     var isType: noteType
 
-    @State private var offset: CGFloat = 1000
+    @State private var offset: CGFloat = -20
 
     var body: some View {
         ZStack {
@@ -24,8 +24,11 @@ struct NoteDialog: View {
                 case .base:
                     Desc(title: NoteDialogContents[2].title, desc: NoteDialogContents[2].desc, point: NoteDialogContents[2].point, subDesc: NoteDialogContents[2].subDesc)
                 }
-            }.frame(width: 600, height: 600)
-                .padding(24)
+            }
+            .frame(width: 600)
+                .padding(.horizontal)
+                .padding(.vertical)
+                .padding(.vertical)
                 .background(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .circular))
                 .overlay {
@@ -36,7 +39,7 @@ struct NoteDialog: View {
                             close()
                         } label: {
                             Image(systemName: "xmark")
-                                .font(.system(size: 24, weight: .bold))
+                                .font(.system(size: 24))
                         }
                             .tint(.black)
                         Spacer()
@@ -45,7 +48,7 @@ struct NoteDialog: View {
                     .padding()
             }
                 .shadow(radius: 20)
-            .offset(y: offset)
+                .offset(y: offset)
                 .onAppear() {
                 withAnimation(.easeIn) {
                     offset = 0
@@ -69,32 +72,33 @@ struct NoteDialog: View {
         desc: String,
         point: [(String, Color)],
         subDesc: String) -> some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.system(size: 48, weight: .bold))
-                .padding(.top, 16)
-            Spacer()
-            MultiColoredText(originalText: desc
-                             , coloredSubstrings: point)
-                .font(.system(size: 25))
-                .multilineTextAlignment(.leading)
-                .lineSpacing(10.0)
-            Spacer()
-            Divider()
-                .padding(.bottom, 16)
-            Text(subDesc)
-                .font(.system(size: 20, weight: .medium))
-                .multilineTextAlignment(.leading)
-                .lineSpacing(10.0)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.system(size: 48, weight: .bold))
+                MultiColoredText(originalText: desc
+                                 , coloredSubstrings: point)
+                    .font(.system(size: 20))
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(8.0)
+                    .padding(.top, 8)
+                
+                Divider()
+                    .padding(.vertical, 16)
+                Text(subDesc)
+                    .font(.system(size: 16, weight: .medium))
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(8.0)
+            }
             Spacer()
         }
-            .padding()
+            .foregroundStyle(.black)
 
     }
 
     private func close () {
-        withAnimation(.easeOut) {
-            offset = 1000
+        withAnimation(.linear) {
+            offset = -20
             isActive = false
         }
     }

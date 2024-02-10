@@ -27,9 +27,10 @@ struct TypesDialog: View {
                     Desc(title: TypesDialogContents[3].title, subTitle: TypesDialogContents[3].subTitle, concentration: TypesDialogContents[3].concentration, duration: TypesDialogContents[3].duration)
 
                 }
-            }
-                .padding(.horizontal, 32)
-                .padding(.vertical, 40)
+            }.frame(width: 300)
+                .padding(.horizontal)
+                .padding(.vertical)
+                .padding(.vertical)
                 .background(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .circular))
                 .overlay {
@@ -51,7 +52,7 @@ struct TypesDialog: View {
                 .shadow(radius: 20)
                 .offset(y: offset)
                 .onAppear() {
-                    withAnimation(.linear) {
+                withAnimation(.easeIn) {
                     offset = 0
                 }
             }
@@ -69,15 +70,18 @@ struct TypesDialog: View {
 
     @ViewBuilder
     private func Desc(title: String, subTitle: String, concentration: String, duration: String) -> some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.system(size: 32, weight: .bold))
-            Text(subTitle)
-            Text("💧 Concentration : \(concentration)")
-                .font(.system(size: 24))
-                .padding(.top, 16)
-            Text("🕒 Duration : \(duration)")
-                .font(.system(size: 24))
+        HStack {
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.system(size: 32, weight: .bold))
+                Text(subTitle)
+                Text("💧 Concentration : \(concentration)")
+                    .font(.system(size: 16))
+                    .padding(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
+                Text("🕒 Duration : \(duration)")
+                    .font(.system(size: 16))
+            }
+            Spacer()
         }
             .foregroundStyle(.black)
 
