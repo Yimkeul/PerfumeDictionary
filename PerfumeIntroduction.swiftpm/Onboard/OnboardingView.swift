@@ -25,7 +25,6 @@ struct OnboardingView: View {
                 Spacer()
                 Text("Perfume has a term for each characteristic")
                     .font(.system(size: 30, weight: .bold))
-                    .foregroundStyle(.black)
                 Spacer()
                 Button {
                     isAppear.toggle()
@@ -43,6 +42,7 @@ struct OnboardingView: View {
                     .padding(.horizontal, 8)
                 Spacer()
             }
+            .foregroundStyle(.black)
 
             if isAppear == true {
                 onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)

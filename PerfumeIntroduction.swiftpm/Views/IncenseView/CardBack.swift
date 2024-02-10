@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardBackView: View {
+struct CardBack: View {
     let test: String
     var body: some View {
         VStack(spacing: 0) {
@@ -38,5 +38,5 @@ struct CardBackView: View {
 }
 
 #Preview {
-    CardBackView(test: "a")
+    CardBack(test: "a")
 }

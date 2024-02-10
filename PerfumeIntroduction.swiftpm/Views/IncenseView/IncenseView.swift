@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct FragranceView: View {
+struct IncenseView: View {
     @State private var currentIndex: Int = 0
     @State private var isFlipped: [Bool] = [false, false, false, false, false, false, false]
     @GestureState private var dragOffset: CGFloat = 0
     var body: some View {
         ZStack {
             ForEach(0..<Cards.count, id: \.self) { index in
-                FlippedCardView(isFlipped: $isFlipped[index], title: Cards[index].Title, desc: Cards[index].Desc, num: String(index + 1))
+                CardView(isFlipped: $isFlipped[index], title: Cards[index].Title, desc: Cards[index].Desc, num: String(index + 1))
                     .scaleEffect(currentIndex == index ? 1.0 : 0.8)
                     .offset(
                     x: CGFloat(index - currentIndex) * 300 + dragOffset,
@@ -61,5 +61,5 @@ struct FragranceView: View {
 }
 
 #Preview {
-    FragranceView()
+    IncenseView()
 }

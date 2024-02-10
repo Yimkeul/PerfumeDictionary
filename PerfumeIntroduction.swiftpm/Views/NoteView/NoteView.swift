@@ -85,6 +85,7 @@ struct NoteView: View {
             Spacer()
             Text("✨Touch Exclamation Mark✨")
                 .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(.black)
             Spacer()
             Button {
                 notePage += 1

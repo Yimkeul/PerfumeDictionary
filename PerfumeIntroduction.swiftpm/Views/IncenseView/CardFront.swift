@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct CardView: View {
+struct CardFront: View {
     let Title: String
     let Desc: String
 
@@ -47,6 +47,7 @@ struct CardView: View {
                             .font(.system(size: 20, weight: .thin))
                         Spacer()
                     }
+                    .foregroundStyle(.black)
                     .padding()
                     .frame(width: 225, height: 425)
                 }
@@ -88,5 +89,5 @@ struct CardView: View {
 
 
 #Preview {
-    CardView(Title: "Test", Desc: "TTTT")
+    CardFront(Title: "Test", Desc: "TTTT")
 }

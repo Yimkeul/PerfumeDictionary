@@ -54,6 +54,7 @@ struct BaseNoteView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
+                .foregroundStyle(.black)
 
             Image(systemName: "exclamationmark.bubble")
                 .resizable()
