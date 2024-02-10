@@ -12,6 +12,7 @@ struct OnboardingView: View {
     @State private var isAnimation: Bool = false
     @State private var isAppear: Bool = false
     @State private var onboardEffect = OnboardEffect()
+    @State private var isDisable: Bool = false
 
     var body: some View {
         ZStack {
@@ -28,6 +29,7 @@ struct OnboardingView: View {
                 Spacer()
                 Button {
                     isAppear.toggle()
+                    isDisable = true
                 } label: {
                     ZStack {
                         Capsule()
@@ -40,6 +42,7 @@ struct OnboardingView: View {
                     }
                 }
                     .padding(.horizontal, 8)
+                    .disabled(isDisable)
                 Spacer()
             }
             .foregroundStyle(.black)

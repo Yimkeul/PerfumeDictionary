@@ -19,8 +19,8 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
             RoundedRectangle(cornerRadius: 14)
                 .fill(
                 (0...2).contains(value) ? Color.white:
-                    (3...5).contains(value) ? Color.Water1:
-                    (5...8).contains(value) ? Color.Water2:
+                    (3...4).contains(value) ? Color.Water1:
+                    (5...7).contains(value) ? Color.Water2:
                     (8...15).contains(value) ? Color.Water3:
                     Color.Water4
             )
