@@ -11,17 +11,17 @@ struct CardView: View {
     @Binding var isFlipped: Bool
     let title: String
     let desc: String
-    let num: String
+    let image: String
     var body: some View {
         ZStack {
-            CardBack(test: num)
+            CardBack(image: image)
                 .rotation3DEffect(
                     .degrees(isFlipped ? 0 : -90),
                 axis: (x: 0.0, y: 1.0, z: 0.0)
             )
                 .animation(isFlipped ? .linear.delay(0.35): .linear , value: isFlipped)
             
-            CardFront(Title: title, Desc: desc)
+            CardFront(title: title, desc: desc)
                 .rotation3DEffect(
                     .degrees(isFlipped ? 90 : 0),
                 axis: (x: 0.0, y: 1.0, z: 0.0)

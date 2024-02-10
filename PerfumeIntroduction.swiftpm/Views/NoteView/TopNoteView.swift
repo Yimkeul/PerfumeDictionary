@@ -25,6 +25,7 @@ struct TopNoteView: View {
         HStack {
             Spacer()
             HStack {
+                Spacer()
                 VStack {
                     VStack {
                         Text("Push")
@@ -89,16 +90,16 @@ struct TopNoteView: View {
             ZStack() {
                 Rectangle()
                     .fill(Color.white)
-                    .frame(width: 130, height: 230)
+                    .frame(width: 200, height: 230)
                     .clipShape(RoundedRectangle(cornerRadius: 12.0, style: .continuous))
                     .shadow(radius: 5, x: 0, y: 10)
                 Rectangle()
-                    .stroke(Color.black, lineWidth: 3)
-                    .frame(width: 100, height: 200)
+                    .stroke(Color.black, lineWidth: 5)
+                    .frame(width: 150, height: 200)
 
                 Rectangle()
                     .stroke(Color.black, lineWidth: 2)
-                    .frame(width: 80, height: 180)
+                    .frame(width: 120, height: 180)
             }
         }
     }

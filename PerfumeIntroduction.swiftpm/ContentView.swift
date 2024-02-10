@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     // 온보딩용 변수 (true여야 온보딩이 시작함)
-    @State private var isOnboard: Bool = true
+    @State private var isOnboard: Bool = false
     // 네비게이션 변수
     @State private var selection: MenuType?
     private var size = UIScreen.main.bounds.size

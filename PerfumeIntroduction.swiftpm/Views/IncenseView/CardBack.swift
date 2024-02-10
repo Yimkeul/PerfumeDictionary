@@ -8,35 +8,32 @@
 import SwiftUI
 
 struct CardBack: View {
-    let test: String
+    let image: String
     var body: some View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.black)
-                .frame(width: 250, height: 50)
-                .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
+                .frame(width: 75, height: 60)
+            ZStack {
                 Rectangle()
-                    .fill(Color.black)
-                    .frame(width: 100, height: 50)
-                ZStack {
-                    Rectangle()
-                        .fill(Color.white)
-                        .frame(width: 300, height: 500)
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-                        .shadow(radius: 5, y: 10)
-                    
-                    Image("Intro")
-                        .frame(width: 300, height: 500)
-                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-                    Text(test)
-                        .bold()
-                }
+                    .fill(Color.white)
+                    .frame(width: 300, height: 345)
+                    .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                     .shadow(radius: 5, y: 10)
-        }.fixedSize()
+
+                Image(image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 345)
+                    .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+            }
+                .shadow(radius: 5, y: 10)
+        }
+            .fixedSize()
             .background(Color.clear)
     }
 }
 
 #Preview {
-    CardBack(test: "a")
+    CardBack(image: "a")
 }

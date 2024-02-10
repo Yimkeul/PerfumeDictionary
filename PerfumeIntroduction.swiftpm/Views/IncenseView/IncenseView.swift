@@ -9,17 +9,52 @@ import SwiftUI
 
 struct IncenseView: View {
     @State private var currentIndex: Int = 0
-    @State private var isFlipped: [Bool] = [false, false, false, false, false, false, false]
+    @State private var isFlipped: [Bool] = Array(repeating: false, count: 19)
     @GestureState private var dragOffset: CGFloat = 0
     
     var body: some View {
         ZStack {
+            VStack {
+                Group {
+                    Text("Incense Types")
+                        .font(.system(.title, weight: .bold))
+                        .padding(.bottom, 16)
+                    Text("Try imagining a scent based on the image.")
+                        .font(.title2)
+                    Text("✨Swipe! And Flip Card✨")
+                        .font(.system(size: 20, weight: .semibold))
+                        .padding(.top, 8)
+                }
+                    .foregroundStyle(.black)
+
+                Spacer()
+                FilppedCards()
+                Spacer()
+            }.padding()
+        }
+        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+           .navigationBarTitleDisplayMode(.inline)
+           .background(
+           Image("BGImg")
+               .resizable()
+               .scaledToFill()
+               .ignoresSafeArea()
+       )
+        
+        
+            
+    }
+    
+    @ViewBuilder
+    private func FilppedCards() -> some View {
+        ZStack {
             ForEach(0..<CardContents.count, id: \.self) { index in
-                CardView(isFlipped: $isFlipped[index], title: CardContents[index].Title, desc: CardContents[index].Desc, num: String(index + 1))
+                CardView(isFlipped: $isFlipped[index], title: CardContents[index].Title, desc: CardContents[index].Desc, image: CardContents[index].Image)
                     .scaleEffect(currentIndex == index ? 1.0 : 0.8)
                     .offset(
-                    x: CGFloat(index - currentIndex) * 300 + dragOffset,
-                    y: currentIndex == index ? 0 : CGFloat(abs(currentIndex - index) * -80))
+                        x: CGFloat(index - currentIndex) * 300 + dragOffset, y: 0
+                    /*y: currentIndex == index ? 0 : CGFloat(abs(currentIndex - index) * -40)*/)
                     .onTapGesture {
                         if currentIndex == index {
                             withAnimation(.easeIn) {
@@ -45,19 +80,7 @@ struct IncenseView: View {
                 }
             })
         )
-        }
-        
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-           .navigationBarTitleDisplayMode(.inline)
-           .background(
-           Image("BGImg")
-               .resizable()
-               .scaledToFill()
-               .ignoresSafeArea()
-       )
-        
-        
-            
+        }.frame(height: 300)
     }
 }
 

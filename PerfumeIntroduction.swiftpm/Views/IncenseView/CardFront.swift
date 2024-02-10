@@ -9,85 +9,53 @@ import SwiftUI
 
 
 struct CardFront: View {
-    let Title: String
-    let Desc: String
+    let title: String
+    let desc: String
 
     var body: some View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.black)
-                .frame(width: 250, height: 50)
-                .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
-            Rectangle()
-                .fill(Color.black)
-                .frame(width: 100, height: 50)
+                .frame(width: 75, height: 60)
             ZStack {
                 Rectangle()
                     .fill(Color.white)
-                    .frame(width: 300, height: 500)
+                    .frame(width: 300, height: 345)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
                     .shadow(radius: 5, y: 10)
                 Rectangle()
                     .fill(Color.white)
-                    .frame(width: 250, height: 450)
+                    .frame(width: 250, height: 300)
                     .overlay(Rectangle().stroke(Color.black, lineWidth: 5))
 
                 ZStack {
                     Rectangle()
                         .fill(Color.white)
-                        .frame(width: 225, height: 425)
+                        .frame(width: 230, height: 280)
                         .overlay(Rectangle().stroke(Color.black, lineWidth: 2))
                     VStack(alignment: .leading) {
                         HStack {
-                            Text(Title)
+                            Text(title)
                                 .font(.system(size: 50, weight: .light))
                             Spacer()
                         }.padding(.bottom, 20)
-                        Text(Desc)
+                        Text(desc)
                             .font(.system(size: 20, weight: .thin))
                         Spacer()
                     }
                     .foregroundStyle(.black)
                     .padding()
-                    .frame(width: 225, height: 425)
+                    .frame(width: 230, height: 280)
                 }
-                
-
-
             }
         }
             .fixedSize()
             .background(Color.clear)
 
     }
-
-    @ViewBuilder
-    private func line(_ top: CGFloat, _ left: CGFloat) -> some View {
-        ZStack {
-            Path { path in
-                path.move(to: CGPoint(x: top, y: 105))
-                path.addLine(to: CGPoint(x: 5, y: left))
-                path.closeSubpath()
-            }
-                .stroke(.black, style: StrokeStyle(lineWidth: 10, lineJoin: .round))
-
-            Path { path in
-                path.move(to: CGPoint(x: top + 30, y: 105))
-                path.addLine(to: CGPoint(x: 5, y: left + 50))
-                path.closeSubpath()
-            }
-                .stroke(.black, style: StrokeStyle(lineWidth: 10, lineJoin: .round))
-
-            Path { path in
-                path.move(to: CGPoint(x: top + 60, y: 105))
-                path.addLine(to: CGPoint(x: 5, y: left + 100))
-                path.closeSubpath()
-            }.stroke(.black, style: StrokeStyle(lineWidth: 10, lineJoin: .round))
-        }
-    }
 }
 
 
 #Preview {
-    CardFront(Title: "Test", Desc: "TTTT")
+    CardFront(title: "Test", desc: "TTTT")
 }

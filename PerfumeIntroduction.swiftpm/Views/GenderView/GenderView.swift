@@ -28,7 +28,6 @@ struct GenderView: View {
                     Text("Let's explore the fragrance terminology related to gender that is sometimes incorporated into the names of perfumes.")
                         .font(.title2)
                 }
-                    .foregroundStyle(.black)
 
                 Spacer()
                 HStack {
@@ -41,7 +40,7 @@ struct GenderView: View {
                 Spacer()
                 Text("In recent years, gender-neutral perfumes have been widely introduced, so the terms mentioned above may not be used as commonly. Just keep that in mind.")
                 Spacer()
-            }
+            }.foregroundStyle(.black)
             .padding()
             if isActive {
                 GenderDialog(genderType: $genderType, isActive: $isActive)
