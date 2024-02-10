@@ -11,10 +11,11 @@ struct IncenseView: View {
     @State private var currentIndex: Int = 0
     @State private var isFlipped: [Bool] = [false, false, false, false, false, false, false]
     @GestureState private var dragOffset: CGFloat = 0
+    
     var body: some View {
         ZStack {
-            ForEach(0..<Cards.count, id: \.self) { index in
-                CardView(isFlipped: $isFlipped[index], title: Cards[index].Title, desc: Cards[index].Desc, num: String(index + 1))
+            ForEach(0..<CardContents.count, id: \.self) { index in
+                CardView(isFlipped: $isFlipped[index], title: CardContents[index].Title, desc: CardContents[index].Desc, num: String(index + 1))
                     .scaleEffect(currentIndex == index ? 1.0 : 0.8)
                     .offset(
                     x: CGFloat(index - currentIndex) * 300 + dragOffset,
@@ -38,7 +39,7 @@ struct IncenseView: View {
                     }
                 } else if value.translation.width < -threshold {
                     withAnimation {
-                        currentIndex = min(Cards.count - 1, currentIndex + 1)
+                        currentIndex = min(CardContents.count - 1, currentIndex + 1)
                         isFlipped = Array(repeating: false, count: isFlipped.count)
                     }
                 }
