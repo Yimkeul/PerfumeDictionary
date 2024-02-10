@@ -100,7 +100,7 @@ struct TypesView: View {
 
                     }
                     Text("🚧 The percentage is a percentage of the total capacity.")
-                        .font(.caption)
+                        .font(.footnote)
                         .foregroundStyle(.black)
                 }
             }
