@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    // 온보딩용 변수 (true여야 온보딩이 시작함)
     @State private var isOnboard: Bool = true
-    // 네비게이션 변수
     @State private var selection: MenuType?
     private var size = UIScreen.main.bounds.size
 
@@ -19,8 +17,8 @@ struct ContentView: View {
                         VStack {
                             Spacer()
                             Text("Icons by Icons8")
-                                .foregroundColor(.Disable) // 텍스트의 색상 설정
-                                .padding() // 텍스트 주변의 여백 추가
+                                .foregroundColor(.Disable)
+                                .padding()
                         }
                     )
                         .toolbar {
@@ -48,8 +46,8 @@ struct ContentView: View {
                     VStack {
                         Spacer()
                         Text("Image by rawpixel.com(Perfume), kues1(background), Freepik(floral background) on Freepik")
-                            .foregroundColor(.Disable) // 텍스트의 색상 설정
-                            .padding() // 텍스트 주변의 여백 추가
+                            .foregroundColor(.Disable)
+                            .padding()
                     }
                 }
             }
