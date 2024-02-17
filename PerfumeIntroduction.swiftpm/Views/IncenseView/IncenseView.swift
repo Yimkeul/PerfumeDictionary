@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IncenseView: View {
     @State private var currentIndex: Int = 0
-    @State private var isFlipped: [Bool] = Array(repeating: false, count: 19)
+    @State private var isFlipped: [Bool] = Array(repeating: false, count: 16)
     @GestureState private var dragOffset: CGFloat = 0
     
     var body: some View {
@@ -53,8 +53,7 @@ struct IncenseView: View {
                 CardView(isFlipped: $isFlipped[index], title: CardContents[index].Title, desc: CardContents[index].Desc, image: CardContents[index].Image)
                     .scaleEffect(currentIndex == index ? 1.0 : 0.8)
                     .offset(
-                        x: CGFloat(index - currentIndex) * 300 + dragOffset, y: 0
-                    /*y: currentIndex == index ? 0 : CGFloat(abs(currentIndex - index) * -40)*/)
+                        x: CGFloat(index - currentIndex) * 300 + dragOffset, y: 0)
                     .onTapGesture {
                         if currentIndex == index {
                             withAnimation(.easeIn) {

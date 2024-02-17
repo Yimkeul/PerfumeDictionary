@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "8smoke.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
