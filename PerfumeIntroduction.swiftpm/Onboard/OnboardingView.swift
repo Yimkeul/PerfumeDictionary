@@ -28,8 +28,9 @@ struct OnboardingView: View {
                     .font(.system(size: 30, weight: .bold))
                 Spacer()
                 Button {
-                    isAppear.toggle()
-                    isDisable = true
+//                    isAppear.toggle()
+//                    isDisable = true
+                    isOnboard.toggle()
                 } label: {
                     ZStack {
                         Capsule()
@@ -45,20 +46,20 @@ struct OnboardingView: View {
                     .disabled(isDisable)
                 Spacer()
             }
-            .foregroundStyle(.black)
+                .foregroundStyle(.black)
 
-            if isAppear == true {
-                onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)
-            }
+//            if isAppear == true {
+//                onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)
+//            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .navigationBarTitleDisplayMode(.inline)
-        .background(
-        Image("BGImg")
-            .resizable()
-            .scaledToFill()
-            .ignoresSafeArea()
-    )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .navigationBarTitleDisplayMode(.inline)
+            .background(
+            Image("BGImg")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
             .onAppear() {
             onboardEffect.setItem()
         }
@@ -88,7 +89,6 @@ struct OnboardingView: View {
                     .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
                     .animation(
                     Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
-                        .delay(0.5)
                     , value: isAnimation)
             }
         }

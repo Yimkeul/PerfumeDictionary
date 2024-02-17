@@ -32,6 +32,7 @@ struct OnboardEffect {
             }
             items1.append(BGEffectData(imageName: imageName[i % 4], xPos: xPos, yPos: yPos, rotate: rotate, p1: Double.random(in: 0...0.11), p3: Double.random(in: 0...0.5)))
             items2.append(BGEffectData(imageName: imageName2[i % 4], xPos: xPos, yPos: yPos, rotate: rotate, p1: Double.random(in: 0...0.11), p3: Double.random(in: 0...0.5)))
+            
         }
     }
 }
