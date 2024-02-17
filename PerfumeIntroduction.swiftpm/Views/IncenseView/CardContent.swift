@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CardContent.swift
 //
 //
 //  Created by yimkeul on 1/16/24.

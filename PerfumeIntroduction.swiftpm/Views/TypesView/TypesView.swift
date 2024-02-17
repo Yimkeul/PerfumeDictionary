@@ -115,7 +115,7 @@ struct TypesView: View {
                         .offset(x: 50, y: isAnimation ? -60 : -50)
                         .animation(.linear(duration: 1).repeatForever(autoreverses: true), value: isAnimation)
                     ProgressView(value: Double(value), total: 30)
-                        .progressViewStyle(RoundedRectProgressViewStyle(value: $value))
+                        .progressViewStyle(ProgressBarStyle(value: $value))
                         .animation(.linear, value: value)
                 }
                 VStack(spacing: 0) {

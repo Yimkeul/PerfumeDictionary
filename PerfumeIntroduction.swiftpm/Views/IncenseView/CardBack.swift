@@ -28,7 +28,3 @@ struct CardBack: View {
             .background(Color.clear)
     }
 }
-
-#Preview {
-    CardBack(image: "a", title: "B")
-}

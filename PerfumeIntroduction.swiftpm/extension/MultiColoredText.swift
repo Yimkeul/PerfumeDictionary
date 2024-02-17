@@ -1,35 +1,11 @@
 //
-//  SwiftUIView.swift
+//  MultiColoredText.swift
 //  
 //
 //  Created by yimkeul on 1/26/24.
 //
 
 import SwiftUI
-
-struct TextWithColoredSubstring: View {
-    var originalText: String
-    var coloredSubstring: String
-    
-    var body: some View {
-        if let coloredRange = originalText.range(of: coloredSubstring) {
-            let beforeRange = originalText[..<coloredRange.lowerBound]
-            let coloredText = originalText[coloredRange]
-            let afterRange = originalText[coloredRange.upperBound...]
-            
-            return Text(beforeRange)
-                .foregroundColor(.black)
-                + Text(coloredText)
-                    .foregroundColor(.pink)
-                + Text(afterRange)
-                    .foregroundColor(.black)
-        } else {
-            return Text(originalText)
-                .foregroundColor(.black)
-        }
-    }
-}
-
 
 struct MultiColoredText: View {
     var originalText: String

@@ -11,7 +11,6 @@ struct OnboardingView: View {
     @Binding var isOnboard: Bool
     @State private var isAnimation: Bool = false
     @State private var isAppear: Bool = false
-    @State private var onboardEffect = OnboardEffect()
     @State private var isDisable: Bool = false
 
     var body: some View {
@@ -28,8 +27,6 @@ struct OnboardingView: View {
                     .font(.system(size: 30, weight: .bold))
                 Spacer()
                 Button {
-//                    isAppear.toggle()
-//                    isDisable = true
                     isOnboard.toggle()
                 } label: {
                     ZStack {
@@ -48,9 +45,6 @@ struct OnboardingView: View {
             }
                 .foregroundStyle(.black)
 
-//            if isAppear == true {
-//                onboardingEffect(isAnimation: isAnimation, item1: onboardEffect.items1, item2: onboardEffect.items2)
-//            }
         }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationBarTitleDisplayMode(.inline)
@@ -60,47 +54,6 @@ struct OnboardingView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
         )
-            .onAppear() {
-            onboardEffect.setItem()
-        }
-    }
-
-    @ViewBuilder
-    private func onboardingEffect(isAnimation: Bool, item1: [BGEffectData], item2: [BGEffectData]) -> some View {
-        ZStack {
-            ForEach(item1, id: \.self) {
-                item in
-                Image(item.imageName)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .rotationEffect(isAnimation ? item.rotate : .degrees(0))
-                    .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
-                    .animation(
-                    Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
-                    , value: isAnimation)
-            }
-
-            ForEach(item2, id: \.self) {
-                item in
-                Image(item.imageName)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .rotationEffect(isAnimation ? item.rotate : .degrees(0))
-                    .offset(x: item.xPos, y: isAnimation ? item.yPos : -onboardEffect.pos)
-                    .animation(
-                    Animation.timingCurve(item.p1, 0, item.p3, 0).speed(0.2)
-                    , value: isAnimation)
-            }
-        }
-            .onAppear() {
-            self.isAnimation = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8, execute: {
-                self.isOnboard.toggle()
-            })
-        }
-            .onDisappear() {
-            self.isAnimation = false
-        }
     }
 }
 

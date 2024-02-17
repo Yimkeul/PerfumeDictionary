@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  TypesDialogContent.swift
 //  
 //
 //  Created by yimkeul on 2/4/24.

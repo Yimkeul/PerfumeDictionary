@@ -56,8 +56,3 @@ struct CardFront: View {
 
     }
 }
-
-
-#Preview {
-    CardFront(title: "Test", desc: "TTTT")
-}

@@ -1,5 +1,5 @@
 //
-//  RoundedRectProgressViewStyle.swift
+//  ProgressBarStyle.swift
 //
 //
 //  Created by yimkeul on 2/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoundedRectProgressViewStyle: ProgressViewStyle {
+struct ProgressBarStyle: ProgressViewStyle {
     @Binding var value: Int
     func makeBody(configuration: Configuration) -> some View {
         GeometryReader {
