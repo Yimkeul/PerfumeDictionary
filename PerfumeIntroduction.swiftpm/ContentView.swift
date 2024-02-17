@@ -45,6 +45,12 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     Image("Intro")
                         .imageScale(.large)
+                    VStack {
+                        Spacer()
+                        Text("Image by rawpixel.com(Perfume), kues1(background), Freepik(floral background) on Freepik")
+                            .foregroundColor(.Disable) // 텍스트의 색상 설정
+                            .padding() // 텍스트 주변의 여백 추가
+                    }
                 }
             }
         }
