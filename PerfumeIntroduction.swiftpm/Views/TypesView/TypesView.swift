@@ -77,6 +77,7 @@ struct TypesView: View {
                             .bold()
                             .offset(y: offsetY)
                             .opacity(opacity)
+                            .foregroundStyle(.black)
                     }
                     spoidBtn()
 
